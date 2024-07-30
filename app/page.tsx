@@ -22,5 +22,6 @@ export default function Home() {
     plugins={[ dayGrid, iCalendarPlugin ]}
     initialView='dayGridMonth'
     eventSources={eventSources}
+    height="100vh"
   />;
 }
