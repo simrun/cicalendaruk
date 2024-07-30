@@ -11,7 +11,6 @@ export default function Home() {
   return <FullCalendar
     plugins={[ dayGrid ]}
     initialView='dayGridMonth'
-    weekends={false}
     events={events}
   />;
 }
