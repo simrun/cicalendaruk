@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "London CI Calendar",
-  description: "Calendar of contact improvisation events in London",
+  description: "Calendar of Contact Improvisation events in London",
 };
 
 export default function RootLayout({
