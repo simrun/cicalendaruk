@@ -23,5 +23,10 @@ export default function Home() {
     initialView='dayGridMonth'
     eventSources={eventSources}
     height="100vh"
+    eventClick={(info) => {
+      // don't navigate away from calendar; open event urls in new window
+      info.jsEvent.preventDefault();
+      window.open(info.event.url, 'noopener');
+    }}
   />;
 }
