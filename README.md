@@ -1,20 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# UK CI Calendar
+UK Contact Improvisation Calendar
 
-## Getting Started
+## Development
+0) Install nvm
+1) Run `nvm install`  # install node version specified in `.nvmrc`
+2) Run `npm install`  # install dependencies
+3) Run `npm run dev`  # start dev server
 
-First, run the development server:
+Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-```bash
-npm run dev
-```
+You can edit the home page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
