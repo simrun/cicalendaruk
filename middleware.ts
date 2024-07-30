@@ -18,6 +18,9 @@ export function middleware(request: NextRequest) {
     if (!process.env.ICS_URL_CIGOLDSMITHS) return NextResponse.error();
     request.nextUrl.href = process.env.ICS_URL_CIGOLDSMITHS;
     headers.set("Host", "feeds.bookwhen.com");
+  } else if (request.nextUrl.pathname === "/feeds/misc.ics") {
+    if (!process.env.ICS_URL_MISC) return NextResponse.error();
+    request.nextUrl.href = process.env.ICS_URL_MISC;
   }
 
   return NextResponse.rewrite(request.nextUrl, {
