@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 
-// Proxy ICS requests as Bookwhen don't allow cross origin
-// We also need to set the Host header else Bookwhen returns 403
+// Proxy ICS requests as they're cross origin
 
 export const config = {
   matcher: "/feeds/:path*",
