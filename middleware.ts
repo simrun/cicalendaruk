@@ -1,31 +1,32 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
+import { MiddlewareConfig, NextMiddleware } from "next/dist/server/web/types";
 
 // Proxy ICS requests as they're cross origin
 
-export const config = {
+const icsPathToEnvVar: Map<string, string> = new Map([
+  ["/feeds/ricknodine.ics", "ICS_URL_RICKNODINE"],
+  ["/feeds/cigoldsmiths.ics", "ICS_URL_CIGOLDSMITHS"],
+  ["/feeds/misc.ics", "ICS_URL_MISC"],
+]);
+
+export const config: MiddlewareConfig = {
   matcher: "/feeds/:path*",
 };
 
-export function middleware(request: NextRequest) {
+export const middleware: NextMiddleware = (request: NextRequest) => {
   const headers = new Headers(request.headers);
 
-  if (request.nextUrl.pathname === "/feeds/ricknodine.ics") {
-    if (!process.env.ICS_URL_RICKNODINE) return NextResponse.error();
-    request.nextUrl.href = process.env.ICS_URL_RICKNODINE;
-    headers.set("Host", "feeds.bookwhen.com");
-  } else if (request.nextUrl.pathname === "/feeds/cigoldsmiths.ics") {
-    if (!process.env.ICS_URL_CIGOLDSMITHS) return NextResponse.error();
-    request.nextUrl.href = process.env.ICS_URL_CIGOLDSMITHS;
-    headers.set("Host", "feeds.bookwhen.com");
-  } else if (request.nextUrl.pathname === "/feeds/misc.ics") {
-    if (!process.env.ICS_URL_MISC) return NextResponse.error();
-    request.nextUrl.href = process.env.ICS_URL_MISC;
+  const envVar = icsPathToEnvVar.get(request.nextUrl.pathname);
+  if (envVar) {
+    if (!process.env[envVar]) return NextResponse.error();
+    // Proxy this ICS feed.
+    request.nextUrl.href = process.env[envVar];
+    headers.set("Host", new URL(process.env[envVar]).host);
+    return NextResponse.rewrite(request.nextUrl, {
+      request: {
+        headers: headers,
+      },
+    });
   }
-
-  return NextResponse.rewrite(request.nextUrl, {
-    request: {
-      headers: headers,
-    },
-  });
-}
+};
