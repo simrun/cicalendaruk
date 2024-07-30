@@ -38,7 +38,7 @@ export default function Home() {
       plugins={[dayGrid, iCalendarPlugin]}
       initialView="dayGridMonth"
       eventSources={eventSources}
-      height="100vh"
+      height="100svh"
       eventClick={(info) => {
         // don't navigate away from calendar; open event urls in new window
         info.jsEvent.preventDefault();
