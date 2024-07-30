@@ -42,7 +42,7 @@ export default function Home() {
       eventClick={(info) => {
         // don't navigate away from calendar; open event urls in new window
         info.jsEvent.preventDefault();
-        if (info.event.url) window.open(info.event.url, "noopener");
+        if (info.event.url) window.open(info.event.url, "_blank", "noopener");
       }}
     />
   );
