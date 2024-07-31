@@ -9,6 +9,15 @@ import { useRouter } from "next/navigation";
 
 import NavBar from "@/components/NavBar";
 
+// Google Calendar doesn't have a URL field
+// Fill it from the Location field instead
+function eventUrlFromLocation(eventData: EventInput) {
+  if (eventData.extendedProps?.location) {
+    eventData.url = eventData.extendedProps.location;
+  }
+  return eventData;
+}
+
 const eventSources = [
   {
     url: "/feeds/ricknodine.ics",
@@ -25,14 +34,13 @@ const eventSources = [
     url: "/feeds/misc.ics",
     format: "ics",
     color: "green",
-    // Google Calendar doesn't have a URL field
-    // Fill it from the Location field instead
-    eventDataTransform: (eventData: EventInput) => {
-      if (eventData.extendedProps?.location) {
-        eventData.url = eventData.extendedProps.location;
-      }
-      return eventData;
-    },
+    eventDataTransform: eventUrlFromLocation,
+  },
+  {
+    url: "/feeds/uk.ics",
+    format: "ics",
+    color: "orange",
+    eventDataTransform: eventUrlFromLocation,
   },
 ];
 
