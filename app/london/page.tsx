@@ -40,8 +40,8 @@ export default function Page() {
   return (
     <div className="flex h-svh flex-col">
       <div className="flex justify-between text-2xl">
-        <p>CI Calendar UK</p>
-        <p>London</p>
+        <h1>CI Calendar UK</h1>
+        <h1>London</h1>
       </div>
 
       <div className="flex-1">
