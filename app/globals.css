@@ -1,3 +1,6 @@
+/* Tailwind utility classes */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "fullcalendar.css";
