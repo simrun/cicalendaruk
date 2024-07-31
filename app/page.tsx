@@ -1,10 +1,9 @@
 "use client";
 
-import FullCalendar from "@fullcalendar/react";
+import type { EventInput } from "@fullcalendar/core";
 import dayGrid from "@fullcalendar/daygrid";
 import iCalendarPlugin from "@fullcalendar/icalendar";
-
-import type { EventInput } from "@fullcalendar/core";
+import FullCalendar from "@fullcalendar/react";
 
 const eventSources = [
   {
