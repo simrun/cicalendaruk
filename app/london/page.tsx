@@ -34,7 +34,7 @@ const eventSources = [
 
 export default function Page() {
   return (
-    <div className="h-svh flex flex-col">
+    <div className="flex h-svh flex-col">
       <div className="flex-1">
         <FullCalendar
           plugins={[dayGrid, iCalendarPlugin]}
