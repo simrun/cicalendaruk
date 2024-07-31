@@ -34,18 +34,23 @@ const eventSources = [
 
 export default function Page() {
   return (
-    <FullCalendar
-      plugins={[dayGrid, iCalendarPlugin]}
-      initialView="dayGridMonth"
-      eventSources={eventSources}
-      eventDisplay="block"
-      displayEventTime={false}
-      height="100svh"
-      eventClick={(info) => {
-        // don't navigate away from calendar; open event urls in new window
-        info.jsEvent.preventDefault();
-        if (info.event.url) window.open(info.event.url, "_blank");
-      }}
-    />
+    <div className="h-svh flex flex-col">
+      <div className="flex-1">
+        <FullCalendar
+          plugins={[dayGrid, iCalendarPlugin]}
+          initialView="dayGridMonth"
+          eventSources={eventSources}
+          eventDisplay="block"
+          displayEventTime={false}
+          height="100%"
+          eventClick={(info) => {
+            // don't navigate away from calendar; open event urls in new window
+            info.jsEvent.preventDefault();
+            if (info.event.url) window.open(info.event.url, "_blank");
+          }}
+        />
+      </div>
+      <h1 className="text-center">London CI Calendar</h1>
+    </div>
   );
 }
