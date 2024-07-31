@@ -4,6 +4,7 @@ import type { EventInput } from "@fullcalendar/core";
 import dayGrid from "@fullcalendar/daygrid";
 import iCalendarPlugin from "@fullcalendar/icalendar";
 import FullCalendar from "@fullcalendar/react";
+import Link from "next/link";
 
 const eventSources = [
   {
@@ -50,7 +51,14 @@ export default function Page() {
           }}
         />
       </div>
-      <h1 className="text-center">London CI Calendar</h1>
+
+      <div className="grid grid-cols-3">
+        <p className="text-start">CI Calendar UK</p>
+        <p className="text-center">London</p>
+        <Link href="/about" className="text-end">
+          About
+        </Link>
+      </div>
     </div>
   );
 }
