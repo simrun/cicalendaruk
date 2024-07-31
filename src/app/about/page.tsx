@@ -12,7 +12,7 @@ export default function Page() {
     <>
       <NavBar />
 
-      <p className="mt-3">Made with ❤ by Sim and John. More to come...</p>
+      <p className="mt-3">Made with ❤ by Sim and John.</p>
     </>
   );
 }
