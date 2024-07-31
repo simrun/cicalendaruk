@@ -39,7 +39,7 @@ const eventSources = [
   {
     url: "/feeds/uk.ics",
     format: "ics",
-    color: "orange",
+    color: "red",
     eventDataTransform: eventUrlFromLocation,
   },
 ];
