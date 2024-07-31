@@ -4,7 +4,7 @@ UK Contact Improvisation Calendar
 
 ## Development
 
-We use VSCode and have relevant settings checked into the repo under `.vscode`.
+We use VSCode and have relevant settings checked into the repo under `.vscode/`.
 
 1. Install VSCode extensions from `.vscode/extensions.json` using the `Extensions: Show Recommended Extensions` command
 1. Add environment variables as KEY=value pairs in `.env.local`
