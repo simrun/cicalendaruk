@@ -32,7 +32,7 @@ const eventSources = [
   },
 ];
 
-export default function Home() {
+export default function Page() {
   return (
     <FullCalendar
       plugins={[dayGrid, iCalendarPlugin]}
