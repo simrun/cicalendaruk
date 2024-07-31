@@ -16,6 +16,7 @@ const eventSources = [
     url: "/feeds/cigoldsmiths.ics",
     format: "ics",
     color: "gold",
+    textColor: "black",
   },
   {
     url: "/feeds/misc.ics",
