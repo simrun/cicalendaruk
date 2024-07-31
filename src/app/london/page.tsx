@@ -55,6 +55,7 @@ export default function Page() {
         <FullCalendar
           plugins={[dayGrid, iCalendarPlugin]}
           initialView="dayGridMonth"
+          firstDay={1}
           eventSources={eventSources}
           eventDisplay="block"
           displayEventTime={false}
