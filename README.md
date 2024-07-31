@@ -14,4 +14,4 @@ We use VSCode and have relevant settings checked into the repo under `.vscode/`.
 1. Run `npm run dev` to start the local development server
 1. Open `http://localhost:3000` with your browser.
 
-Pages live in the `app` directory (NextJS app router). The development server auto-reloads as you edit.
+Pages live in `src/app/` (NextJS app router). The development server auto-reloads as you edit.
