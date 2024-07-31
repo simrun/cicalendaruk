@@ -7,6 +7,8 @@ import FullCalendar from "@fullcalendar/react";
 
 import { useRouter } from "next/navigation";
 
+import NavBar from "@/components/NavBar";
+
 const eventSources = [
   {
     url: "/feeds/ricknodine.ics",
@@ -39,10 +41,7 @@ export default function Page() {
 
   return (
     <div className="flex h-svh flex-col">
-      <div className="flex justify-between text-2xl">
-        <h1>CI Calendar UK</h1>
-        <h1>London</h1>
-      </div>
+      <NavBar location="London" />
 
       <div className="flex-1">
         <FullCalendar
