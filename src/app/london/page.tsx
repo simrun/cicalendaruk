@@ -11,6 +11,9 @@ import { useRouter } from "next/navigation";
 
 import NavBar from "@/components/NavBar";
 
+const isMapUrlRegex =
+  /(?:google\.com|goo\.gl)\/maps|maps\.(?:google|apple|app\.goo\.gl)/;
+
 // Google Calendar doesn't have a URL field, so infer URLs from the location
 // or description fields if necessary.
 function addEventUrl(eventData: EventInput) {
@@ -24,9 +27,7 @@ function addEventUrl(eventData: EventInput) {
     eventData.url = new URL(eventData.extendedProps?.location).toString();
     // If the location URL is a map link, leave it set as eventData.url, but
     // don't return so the URL from the description (if any) can overwrite it.
-    const mapsRegex =
-      /(?:google\.com|goo\.gl)\/maps|maps\.(?:google|apple|app\.goo\.gl)/;
-    if (!mapsRegex.test(eventData.url)) {
+    if (!isMapUrlRegex.test(eventData.url)) {
       return eventData;
     }
   } catch (e) {
@@ -52,10 +53,12 @@ function addEventUrl(eventData: EventInput) {
   // Search for a URL that starts with http(s):// or www., contains no spaces or
   // quotes, and ends with a unicode word character, closing parenthesis, or
   // slash. Also, hostnames must contain a dot or (IPv6) colon.
-  const urlRegex = /\b(?:https?:\/\/[^'"\s.]+[.:]|www\.)[^'"\s]+[\w)\/]/u;
+  const urlRegex = /\b(?:https?:\/\/[^'"\s.]+[.:]|www\.)[^'"\s]+[\w)\/]/gu;
   const urlMatch = description.match(urlRegex);
   if (urlMatch) {
-    let url = urlMatch[0];
+    // Prefer non-map URLs.
+    const nonMapUrls = urlMatch.filter((url) => !isMapUrlRegex.test(url));
+    let url = nonMapUrls.length ? nonMapUrls[0] : urlMatch[0];
     // Guess scheme for www. URLs.
     if (!/^https?:\/\//.test(url)) {
       url = "https://" + url;
