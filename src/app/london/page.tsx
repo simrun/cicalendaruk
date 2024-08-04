@@ -1,5 +1,7 @@
 "use client";
 
+import { url } from "inspector";
+
 import type { EventInput } from "@fullcalendar/core";
 import dayGrid from "@fullcalendar/daygrid";
 import iCalendarPlugin from "@fullcalendar/icalendar";
@@ -20,7 +22,13 @@ function addEventUrl(eventData: EventInput) {
   // Next check if the location field is an absolute URL.
   try {
     eventData.url = new URL(eventData.extendedProps?.location).toString();
-    return eventData;
+    // If the location URL is a map link, leave it set as eventData.url, but
+    // don't return so the URL from the description (if any) can overwrite it.
+    const mapsRegex =
+      /(?:google\.com|goo\.gl)\/maps|maps\.(?:google|apple|app\.goo\.gl)/;
+    if (!mapsRegex.test(eventData.url)) {
+      return eventData;
+    }
   } catch (e) {
     // Location is blank or not an absolute URL.
   }
