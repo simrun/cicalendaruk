@@ -48,7 +48,13 @@ function addEventUrl(eventData: EventInput) {
   const urlMatch = description.match(urlRegex);
   if (urlMatch) {
     let url = urlMatch[0];
-    // Remove unbalanced trailing closing parentheses.
+    // Guess scheme for www. URLs.
+    if (!/^https?:\/\//.test(url)) {
+      url = "https://" + url;
+    }
+    // Remove unbalanced trailing closing parentheses. We allowed closing
+    // parentheses to support e.g. https://en.wikipedia.org/wiki/101_(number),
+    // but don't want parentheses from e.g. (https://example.com).
     let excessParens =
       (url.match(/\)/g) ?? []).length - (url.match(/\(/g) ?? []).length;
     while (url.at(-1) === ")" && excessParens-- > 0) {
