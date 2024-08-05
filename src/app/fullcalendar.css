@@ -11,32 +11,34 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+.fc-dayGridMonth-view .fc-daygrid-event {
+  --event-line-height: 1.05;
+  line-height: var(--event-line-height);
+}
 
 /* Allow non-all-day events to wrap onto 2 lines on days where there are <= 2 events. */
-.fc-daygrid-day-events:where(
-    :not(
-        :has(
-            .fc-daygrid-event-harness
-              + .fc-daygrid-event-harness
-              + .fc-daygrid-event-harness
-          )
-      )
-  )
-  > .fc-daygrid-event-harness:not(.fc-daygrid-event-harness-abs)
-  > .fc-daygrid-event {
+.fc-dayGridMonth-view
+  .fc-daygrid-event:is(
+    .up-to-1-overlapping-events,
+    .up-to-0-overlapping-events
+  ) {
   white-space: normal;
-  word-break: break-all;
-  overflow-y: hidden;
-  line-height: 1.05;
   --event-lines: 2;
-  max-height: calc(var(--event-lines) * 1.05em + 4px);
+  max-height: calc(var(--event-lines) * var(--event-line-height) * 1em + 4px);
+  overflow-y: hidden;
 }
 /* If there is only one event on a day it can even wrap onto 3 lines. */
-.fc-daygrid-day-events:where(
-    :not(:has(.fc-daygrid-event-harness + .fc-daygrid-event-harness))
-  )
-  > .fc-daygrid-event-harness:not(.fc-daygrid-event-harness-abs)
-  > .fc-daygrid-event {
+.fc-dayGridMonth-view .fc-daygrid-event.up-to-0-overlapping-events {
   --event-lines: 3;
-  max-height: calc(var(--event-lines) * 1.05em + 4px);
+}
+/* On mobile/phablet screens, events are so narrow (< 90px wide) that
+   wrapping in the middle of words improves event legibility. */
+@media (max-width: 630px) {
+  .fc-dayGridMonth-view
+    .fc-daygrid-event:is(
+      .up-to-1-overlapping-events,
+      .up-to-0-overlapping-events
+    ) {
+    word-break: break-all;
+  }
 }

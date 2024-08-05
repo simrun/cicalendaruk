@@ -2,7 +2,7 @@
 
 import { url } from "inspector";
 
-import type { EventInput } from "@fullcalendar/core";
+import type { EventInput, EventContentArg } from "@fullcalendar/core";
 import dayGrid from "@fullcalendar/daygrid";
 import iCalendarPlugin from "@fullcalendar/icalendar";
 import FullCalendar from "@fullcalendar/react";
@@ -77,6 +77,65 @@ function addEventUrl(eventData: EventInput) {
   return eventData;
 }
 
+/** Adds a classname counting how many events overlap at once with the event. */
+function classNamesForEvent(arg: EventContentArg) {
+  const nextDay = (date: Date) => {
+    date = new Date(date);
+    date.setDate(date.getDate() + 1);
+    return date;
+  };
+  const isMidnight = (date: Date) => {
+    return date.valueOf() === new Date(date).setHours(0, 0, 0, 0);
+  };
+
+  // Midnight at beginning of first visible day of arg.event.
+  const eventStartDay = new Date(
+    Math.max(
+      arg.view.activeStart.valueOf(),
+      !arg.event.start
+        ? -8640000000000000
+        : new Date(arg.event.start).setHours(0, 0, 0, 0),
+    ),
+  );
+  // Midnight at beginning of the day after the last visible day of arg.event.
+  const eventEndDay = new Date(
+    Math.min(
+      arg.view.activeEnd.valueOf(),
+      !arg.event.end
+        ? 8640000000000000
+        : isMidnight(arg.event.end)
+          ? arg.event.end.valueOf()
+          : new Date(arg.event.end).setHours(24, 0, 0, 0),
+    ),
+  );
+
+  const visibleEvents = arg.view.calendar.getEvents(); // Includes arg.event.
+
+  let maxEventsOnEventDays = 0;
+  for (
+    let dayStart = eventStartDay;
+    dayStart < eventEndDay;
+    dayStart = nextDay(dayStart)
+  ) {
+    let dayEnd = nextDay(dayStart);
+    let eventsOnDay = 0;
+    for (let event of visibleEvents) {
+      if (
+        event.start &&
+        event.start < dayEnd &&
+        event.end &&
+        event.end > dayStart
+      ) {
+        eventsOnDay++;
+      }
+    }
+    if (eventsOnDay > maxEventsOnEventDays) {
+      maxEventsOnEventDays = eventsOnDay;
+    }
+  }
+  return `up-to-${maxEventsOnEventDays - 1}-overlapping-events`;
+}
+
 const eventSources = [
   {
     url: "/feeds/ricknodine.ics",
@@ -116,6 +175,7 @@ export default function Page() {
           eventSources={eventSources}
           eventDataTransform={addEventUrl}
           eventDisplay="block"
+          eventClassNames={classNamesForEvent}
           displayEventTime={false}
           height="100%"
           headerToolbar={{ start: "title", end: "about today prev,next" }}
