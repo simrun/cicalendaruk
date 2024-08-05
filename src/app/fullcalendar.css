@@ -16,24 +16,140 @@
   line-height: var(--event-line-height);
 }
 
-/* Allow non-all-day events to wrap onto 2 lines on days where there are <= 2 events. */
-.fc-dayGridMonth-view
-  .fc-daygrid-event:is(
-    .up-to-1-overlapping-events,
-    .up-to-0-overlapping-events
-  ) {
-  white-space: normal;
+/* If there is only one event on a day it can wrap onto 2 lines. */
+.fc-dayGridMonth-view .fc-daygrid-event.up-to-0-overlapping-events {
   --event-lines: 2;
+  white-space: normal;
   max-height: calc(var(--event-lines) * var(--event-line-height) * 1em + 4px);
   overflow-y: hidden;
 }
-/* If there is only one event on a day it can even wrap onto 3 lines. */
-.fc-dayGridMonth-view .fc-daygrid-event.up-to-0-overlapping-events {
-  --event-lines: 3;
+/*
+On taller screens, we can fit more events. Calculations based on
+empirically observed event heights (approximate):
+- 1-line: 20px
+- 2-line: 31px
+- 3-line: 45px
+- 4-line: 59px
+- 5-line: 74px
+- 6-line: 88px
+- 7-line: 102px
+- 8-line: 117px
+- 9-line: 131px
+- 10-line: 145px
+- 11-line: 159px
+- 12-line: 174px
+
+And the following rough formula for min innerHeight:
+(event height * events per day + 24px day number) * 6 weeks per month view + 109px header
+*/
+@media (min-height: 625px) {
+  /* Enough for 2x 2-line events per day,
+     or 1x 4-line event per day. */
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-1-overlapping-events {
+    --event-lines: 2;
+    white-space: normal;
+    max-height: calc(var(--event-lines) * var(--event-line-height) * 1em + 4px);
+    overflow-y: hidden;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-0-overlapping-events {
+    --event-lines: 3 /* leave more room for other rows */;
+  }
+}
+@media (min-height: 660px) {
+  /* Enough for 1x 4-line event per day (really now). */
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-0-overlapping-events {
+    --event-lines: 4;
+  }
+}
+@media (min-height: 811px) {
+  /* Enough for 3x 2-line events per day,
+     or 2x 3-line events per day,
+     or 1x 6-line event per day. */
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-2-overlapping-events {
+    --event-lines: 2;
+    white-space: normal;
+    max-height: calc(var(--event-lines) * var(--event-line-height) * 1em + 4px);
+    overflow-y: hidden;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-1-overlapping-events {
+    --event-lines: 3;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-0-overlapping-events {
+    --event-lines: 5 /* leave more room for other rows */;
+  }
+}
+@media (min-height: 997px) {
+  /* Enough for 4x 2-line events per day,
+     or 2x 4-line events per day,
+     or 1x 8-line event per day. */
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-3-overlapping-events {
+    --event-lines: 2;
+    white-space: normal;
+    max-height: calc(var(--event-lines) * var(--event-line-height) * 1em + 4px);
+    overflow-y: hidden;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-1-overlapping-events {
+    --event-lines: 4;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-0-overlapping-events {
+    --event-lines: 7 /* leave more room for other rows */;
+  }
+}
+@media (min-height: 1063px) {
+  /* Enough for 3x 3-line events per day,
+     or 1x 9-line event per day. */
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-2-overlapping-events {
+    --event-lines: 3;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-0-overlapping-events {
+    --event-lines: 8 /* leave more room for other rows */;
+  }
+}
+@media (min-height: 1183px) {
+  /* Enough for 5x 2-line events per day,
+     or 2x 5-line events per day,
+     or 1x 10-line event per day. */
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-4-overlapping-events {
+    --event-lines: 2;
+    white-space: normal;
+    max-height: calc(var(--event-lines) * var(--event-line-height) * 1em + 4px);
+    overflow-y: hidden;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-1-overlapping-events {
+    --event-lines: 5;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-0-overlapping-events {
+    --event-lines: 9 /* leave more room for other rows */;
+  }
+}
+@media (min-height: 1369px) {
+  /* Enough for 6x 2-line events per day,
+     or 4x 3-line events per day,
+     or 3x 4-line events per day,
+     or 2x 6-line events per day,
+     or 1x 12-line event per day. */
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-5-overlapping-events {
+    --event-lines: 2;
+    white-space: normal;
+    max-height: calc(var(--event-lines) * var(--event-line-height) * 1em + 4px);
+    overflow-y: hidden;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-3-overlapping-events {
+    --event-lines: 3;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-2-overlapping-events {
+    --event-lines: 4;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-1-overlapping-events {
+    --event-lines: 6;
+  }
+  .fc-dayGridMonth-view .fc-daygrid-event.up-to-0-overlapping-events {
+    --event-lines: 11 /* leave more room for other rows */;
+  }
 }
 /* On mobile/phablet screens, events are so narrow (< 90px wide) that
    wrapping in the middle of words improves event legibility. */
-@media (max-width: 630px) {
+@media (max-width: 630px) and (max-height: 810px) {
   .fc-dayGridMonth-view
     .fc-daygrid-event:is(
       .up-to-1-overlapping-events,
