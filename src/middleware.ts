@@ -13,19 +13,21 @@ export const config: MiddlewareConfig = {
   matcher: "/feeds/:path*",
 };
 
-export const middleware: NextMiddleware = (request: NextRequest) => {
+export const middleware: NextMiddleware = (request) => {
   const headers = new Headers(request.headers);
 
   const envVar = icsPathToEnvVar.get(request.nextUrl.pathname);
-  if (envVar) {
-    if (!process.env[envVar]) return NextResponse.error();
-    // Proxy this ICS feed.
-    request.nextUrl.href = process.env[envVar];
-    headers.set("Host", new URL(process.env[envVar]).host);
-    return NextResponse.rewrite(request.nextUrl, {
-      request: {
-        headers: headers,
-      },
-    });
-  }
+  if (!envVar) return NextResponse.next();
+
+  const targetUrl = process.env[envVar];
+  if (!targetUrl)
+    return new Response("Missing environment variable", { status: 500 });
+
+  request.nextUrl.href = targetUrl;
+  headers.set("Host", new URL(targetUrl).host);
+  return NextResponse.rewrite(request.nextUrl, {
+    request: {
+      headers: headers,
+    },
+  });
 };
