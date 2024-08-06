@@ -1,6 +1,10 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"],
-  "plugins": ["import"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:next-on-pages/recommended",
+    "prettier"
+  ],
+  "plugins": ["import", "next-on-pages"],
   "rules": {
     "import/order": [
       "warn",
