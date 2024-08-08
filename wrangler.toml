@@ -2,3 +2,6 @@ name = "cicalendaruk"
 pages_build_output_dir = ".vercel/output/static"
 compatibility_flags = [ "nodejs_compat" ]
 compatibility_date = "2024-08-06"
+
+[env.production.vars]
+GA_MEASUREMENT_ID = "G-G4H7QHT4TP"
