@@ -178,9 +178,15 @@ export default function Page() {
           eventClassNames={classNamesForEvent}
           displayEventTime={false}
           height="100%"
-          headerToolbar={{ start: "title", end: "about today prev,next" }}
+          headerToolbar={{
+            start: "title",
+            end: "addToCalendar today prev,next",
+          }}
           customButtons={{
-            about: { text: "about", click: () => router.push("/about") },
+            addToCalendar: {
+              text: "add to my calendar",
+              click: () => router.push("/london/subscribe"),
+            },
           }}
           titleFormat={{ year: "2-digit", month: "short" }}
           eventClick={(info) => {
