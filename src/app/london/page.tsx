@@ -3,6 +3,7 @@
 import { url } from "inspector";
 
 import type { EventInput, EventContentArg } from "@fullcalendar/core";
+import { VerboseFormattingArg } from "@fullcalendar/core/internal";
 import dayGrid from "@fullcalendar/daygrid";
 import iCalendarPlugin from "@fullcalendar/icalendar";
 import FullCalendar from "@fullcalendar/react";
@@ -136,6 +137,24 @@ function classNamesForEvent(arg: EventContentArg) {
   return `up-to-${maxEventsOnEventDays - 1}-overlapping-events`;
 }
 
+function dateToTitle(date: Date): string {
+  // TODO: Make this adjust according to window.innerWidth.
+  const innerWidth = 320;
+  const month =
+    innerWidth >= 480
+      ? date.toLocaleString("en", {
+          month: "long",
+        })
+      : date
+          .toLocaleString("en", {
+            month: "short",
+          })
+          // toLocaleString returns "Sept" instead of "Sep".
+          .slice(0, 3);
+  const year = date.getFullYear();
+  return month + (innerWidth >= 400 ? ` ${year}` : ` ’${year % 100}`);
+}
+
 const eventSources = [
   {
     url: "/feeds/ricknodine.ics",
@@ -184,11 +203,13 @@ export default function Page() {
           }}
           customButtons={{
             addToCalendar: {
-              text: "add to my calendar",
+              text: "add to my\ncalendar",
               click: () => router.push("/london/subscribe"),
             },
           }}
-          titleFormat={{ year: "2-digit", month: "short" }}
+          titleFormat={(arg: VerboseFormattingArg) => {
+            return dateToTitle(arg.date.marker);
+          }}
           eventClick={(info) => {
             // don't navigate away from calendar; open event urls in new window
             info.jsEvent.preventDefault();

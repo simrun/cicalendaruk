@@ -1,6 +1,34 @@
+.fc .fc-toolbar-title {
+  padding-left: 0.25rem;
+  font-size: 1.5rem;
+}
+
 /* Make buttons less fat */
 .fc .fc-button {
   padding: 0.25em 0.45em;
+}
+@media (max-width: 599px) {
+  /* Wrap "add to my calendar" button onto two lines.
+     And expand other buttons to match. */
+  .fc .fc-button {
+    padding: 6px 4px;
+  }
+  .fc .fc-addToCalendar-button {
+    white-space: pre-wrap;
+    line-height: 1;
+    padding: calc(6px - 0.25em) 0.45em;
+  }
+  @media (min-width: 340px) {
+    .fc :is(.fc-prev-button, .fc-next-button) {
+      padding-left: 0.45em;
+      padding-right: 0.45em;
+    }
+  }
+}
+@media (min-width: 400px) {
+  .fc .fc-header-toolbar {
+    padding-right: 0.25rem;
+  }
 }
 
 /* Reducing spacing to make more room for events. */
