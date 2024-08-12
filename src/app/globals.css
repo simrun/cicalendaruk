@@ -3,10 +3,4 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (min-width: 400px) {
-  #longer-sitename {
-    display: inline;
-  }
-}
-
 @import "fullcalendar.css";

@@ -5,10 +5,7 @@ export default function NavBar({ location }: { location?: string }) {
     <div className="flex items-baseline justify-start px-1 pb-1 text-2xl">
       <Link href="/">
         CI Cal
-        <span id="longer-sitename" className="hidden">
-          endar
-        </span>{" "}
-        UK
+        <span className="xs:inline hidden">endar</span> UK
       </Link>
       {location && <span>&nbsp;›&nbsp;{location}</span>}
       <Link
