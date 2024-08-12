@@ -184,7 +184,7 @@ export default function Page() {
 
   return (
     <div className="flex h-svh flex-col">
-      <NavBar location="London" />
+      <NavBar breadcrumb={[["London"]]} />
 
       <div className="flex-1">
         <FullCalendar

@@ -4,3 +4,9 @@
 @tailwind utilities;
 
 @import "fullcalendar.css";
+
+@layer base {
+  a:where([href]) {
+    @apply text-sky-500 underline hover:text-sky-400;
+  }
+}
