@@ -6,7 +6,71 @@
 @import "fullcalendar.css";
 
 @layer base {
+  :is(p, ol, ul):not(:first-child) {
+    margin-top: 1em;
+  }
+  :is(p, ol, ul):not(:last-child) {
+    margin-bottom: 1em;
+  }
+  ol {
+    list-style-type: decimal;
+    padding-left: 40px;
+  }
+  ul {
+    list-style-type: disc;
+    padding-left: 40px;
+  }
+  @counter-style lower-alpha-bracket {
+    system: extends lower-alpha;
+    suffix: ") ";
+  }
+  ol.lower-alpha-bracket {
+    list-style: lower-alpha-bracket;
+  }
+  blockquote {
+    @apply ml-10;
+  }
   a:where([href]) {
     @apply text-sky-500 underline hover:text-sky-400;
+  }
+}
+
+@layer components {
+  details.expandable {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 0.5em 0.5em 0;
+  }
+  details.expandable > summary {
+    font-weight: bold;
+    margin: -0.5em -0.5em 0;
+    padding: 0.5em;
+    cursor: pointer;
+  }
+  details.expandable[open] {
+    padding: 0.5em;
+  }
+  details.expandable[open] > summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 0.5em;
+  }
+  details.expandable > summary + * {
+    margin-top: 0;
+  }
+  details.expandable > :last-child:not(summary) {
+    margin-bottom: 0;
+  }
+
+  .note-callout {
+    @apply rounded border border-l-4 border-blue-500 bg-blue-50 p-4;
+  }
+  .note-callout::before {
+    content: "ℹ️ ";
+  }
+  .tip-callout {
+    @apply rounded border border-l-4 border-green-500 bg-green-50 p-4;
+  }
+  .tip-callout::before {
+    content: "💡 ";
   }
 }
