@@ -4,5 +4,8 @@
   "prettier.requireConfig": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
   }
 }
