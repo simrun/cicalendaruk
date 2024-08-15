@@ -10,6 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+  // There isn't good documentation on how to build subscribe to ICS links for
+  // the major calendar apps. This was gathered from many sources, including:
+  // https://stackoverflow.com/questions/75119105/how-to-create-a-subscribtion-link-to-ics-webcal-calendars
+
   const calendarName = "CI Calendar London (merged)";
   // This is the "Get shareable link" (which is accessible by anyone whilst
   // "Make available to public" remains ticked; if that were unticked only
@@ -270,7 +274,7 @@ export default function Page() {
                 <blockquote>
                   <a
                     className="font-bold"
-                    href={`https://outlook.office.com/calendar/0/addfromweb?name=${encodeURIComponent(calendarName)}&url=encodeURIComponent(icsHttpsUrl)`}
+                    href={`https://outlook.office.com/calendar/0/addfromweb?name=${encodeURIComponent(calendarName)}&url=${encodeURIComponent(icsHttpsUrl)}`}
                   >
                     Add to Outlook calendar
                   </a>
@@ -282,7 +286,7 @@ export default function Page() {
                 <blockquote>
                   <a
                     className="font-bold"
-                    href={`https://outlook.live.com/calendar/0/addfromweb?name=${encodeURIComponent(calendarName)}&url=encodeURIComponent(icsHttpsUrl)`}
+                    href={`https://outlook.live.com/calendar/0/addfromweb?name=${encodeURIComponent(calendarName)}&url=${encodeURIComponent(icsHttpsUrl)}`}
                   >
                     Add to Outlook.com calendar
                   </a>
