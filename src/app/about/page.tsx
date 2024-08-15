@@ -15,18 +15,20 @@ export default function Page() {
         <div className="max-w-prose">
           <NavBar breadcrumb={[["About"]]} />
 
-          <p className="mt-3">Made with ❤️ by Sim and John.</p>
+          <div className="prose">
+            <p className="mt-3">Made with ❤️ by Sim and John.</p>
 
-          <p className="mt-3">
-            Source code on{" "}
-            <Link
-              className="underline"
-              href="https://github.com/simrun/cicalendaruk"
-            >
-              Github
-            </Link>
-            .
-          </p>
+            <p className="mt-3">
+              Source code on{" "}
+              <Link
+                className="underline"
+                href="https://github.com/simrun/cicalendaruk"
+              >
+                Github
+              </Link>
+              .
+            </p>
+          </div>
         </div>
       </div>
     </>

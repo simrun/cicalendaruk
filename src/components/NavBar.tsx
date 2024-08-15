@@ -25,12 +25,24 @@ export default function NavBar({
       {breadcrumb.map(([name, url, className]) => (
         <span key={url ?? name} className={className}>
           &nbsp;›&nbsp;
-          {url ? <Link href={url}>{name}</Link> : name}
+          {url ? (
+            <Link
+              className="text-sky-500 underline hover:text-sky-400"
+              href={url}
+            >
+              {name}
+            </Link>
+          ) : (
+            name
+          )}
         </span>
       ))}
       {!isAbout && (
         <span className="flex-1 ps-1 text-right">
-          <Link className="relative bottom-0.5 text-base" href="/about">
+          <Link
+            className="hover:text-sky-400relative bottom-0.5 text-base text-sky-500 underline"
+            href="/about"
+          >
             About
           </Link>
         </span>

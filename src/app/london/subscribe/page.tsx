@@ -35,7 +35,7 @@ export default function Page() {
           ]}
         />
 
-        <div className="mt-3 p-1">
+        <div className="prose mt-3 p-1">
           <p>
             You can subscribe to this calendar so the latest CI events in London
             automatically appear in your calendar app.
@@ -73,7 +73,7 @@ export default function Page() {
                     src="/google-calendar-icon-24dp.svg"
                     width="18"
                     height="18"
-                    className="inline"
+                    className="my-0 inline"
                     alt=""
                   />{" "}
                   installed.
@@ -109,7 +109,7 @@ export default function Page() {
                     src="/google-calendar-icon-24dp.svg"
                     width="18"
                     height="18"
-                    className="inline"
+                    className="my-0 inline"
                     alt=""
                   />{" "}
                   installed.
@@ -176,7 +176,7 @@ export default function Page() {
                     src="/google-calendar-icon-24dp.svg"
                     width="18"
                     height="18"
-                    className="inline"
+                    className="my-0 inline"
                     alt=""
                   />{" "}
                   on your Android device.
@@ -187,7 +187,7 @@ export default function Page() {
                     src="/android-menu-icon-24dp.png"
                     width="18"
                     height="18"
-                    className="inline"
+                    className="my-0 inline"
                     alt=""
                   />
                   .
@@ -198,7 +198,7 @@ export default function Page() {
                     src="/android-settings-icon-24dp.png"
                     width="18"
                     height="18"
-                    className="inline"
+                    className="my-0 inline"
                     alt=""
                   />
                   .
@@ -226,7 +226,7 @@ export default function Page() {
                 src="/android-menu-icon-24dp.png"
                 width="18"
                 height="18"
-                className="inline"
+                className="my-0 inline"
                 alt=""
               />{" "}
               to show the sidebar; on mobile, the calendar might appear under
