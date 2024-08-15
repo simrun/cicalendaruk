@@ -1,3 +1,30 @@
+/* Make today number stand out more instead of the subtle background. */
+:root {
+  --fc-today-bg-color: inherit;
+}
+.fc .fc-daygrid-day-top {
+  justify-content: center;
+}
+.fc .fc-day-today .fc-daygrid-day-number {
+  font-size: calc(14rem / 16);
+}
+.fc .fc-day-today .fc-daygrid-day-number {
+  color: white;
+  background-color: rgb(26, 115, 232);
+  border-radius: 50%;
+  padding: 0;
+  line-height: calc(21rem / 16);
+  height: calc(21rem / 16);
+  aspect-ratio: 1;
+  text-align: center;
+  margin: calc(2rem / 16) 0 calc(1rem / 16);
+}
+
+/* Make weekend distinct. */
+.fc .fc-daygrid-day:is(.fc-day-sat, .fc-day-sun) {
+  background-color: #f5f6f5;
+}
+
 .fc .fc-toolbar-title {
   padding-left: 0.25rem;
   font-size: 1.5rem;
