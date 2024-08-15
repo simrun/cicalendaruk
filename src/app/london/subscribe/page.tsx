@@ -14,7 +14,7 @@ export default function Page() {
   // the major calendar apps. This was gathered from many sources, including:
   // https://stackoverflow.com/questions/75119105/how-to-create-a-subscribtion-link-to-ics-webcal-calendars
 
-  const calendarName = "CI Calendar London (merged)";
+  const calendarName = "CI Calendar London";
   // This is the "Get shareable link" (which is accessible by anyone whilst
   // "Make available to public" remains ticked; if that were unticked only
   // people under "Share with specific people or groups" would have access).
