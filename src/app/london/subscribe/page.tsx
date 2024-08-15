@@ -48,7 +48,7 @@ export default function Page() {
                 src="/google-calendar-icon-24dp.svg"
                 width="18"
                 height="18"
-                className="relative bottom-[calc(2rem/16)] ml-0.5 inline"
+                className="not-prose relative bottom-[calc(2rem/16)] ml-0.5 inline"
                 alt=""
               />
             </summary>
@@ -80,11 +80,9 @@ export default function Page() {
                 </li>
                 <li>
                   Click the following link:
-                  <blockquote>
-                    <a className="font-bold" href={googleCalendarUrl}>
-                      Add to Google Calendar
-                    </a>
-                  </blockquote>
+                  <div className="ml-7">
+                    <a href={googleCalendarUrl}>Add to Google Calendar</a>
+                  </div>
                 </li>
                 <li>
                   The Google Calendar app should open. Accept the prompt it
@@ -116,11 +114,9 @@ export default function Page() {
                 </li>
                 <li>
                   Click the following link:
-                  <blockquote>
-                    <a className="font-bold" href={googleCalendarUrl}>
-                      Add to Google Calendar
-                    </a>
-                  </blockquote>
+                  <div className="ml-7">
+                    <a href={googleCalendarUrl}>Add to Google Calendar</a>
+                  </div>
                 </li>
                 <li>
                   {/*
@@ -145,11 +141,9 @@ export default function Page() {
               <ol>
                 <li>
                   Click the following link:
-                  <blockquote>
-                    <a className="font-bold" href={googleCalendarUrl}>
-                      Add to Google Calendar
-                    </a>
-                  </blockquote>
+                  <div className="ml-7">
+                    <a href={googleCalendarUrl}>Add to Google Calendar</a>
+                  </div>
                 </li>
                 <li>
                   The Google Calendar website should open. Accept the prompt it
@@ -240,18 +234,16 @@ export default function Page() {
                 src="/apple-icon-24dp.svg"
                 width="18"
                 height="18"
-                className="relative bottom-[calc(3rem/16)] ml-0.5 inline"
+                className="not-prose relative bottom-[calc(3rem/16)] ml-0.5 inline"
                 alt=""
               />
             </summary>
             <ol>
               <li>
                 Click the following link:
-                <blockquote>
-                  <a className="font-bold" href={icsWebcalUrl}>
-                    Add to calendar
-                  </a>
-                </blockquote>
+                <div className="ml-7">
+                  <a href={icsWebcalUrl}>Add to calendar</a>
+                </div>
               </li>
               <li>Choose iCloud from the Location dropdown, if applicable.</li>
               <li>
@@ -285,41 +277,37 @@ export default function Page() {
                 src="/outlook-icon-24dp.svg"
                 width="18"
                 height="18"
-                className="relative bottom-[calc(2rem/16)] ml-1 inline"
+                className="not-prose relative bottom-[calc(2rem/16)] ml-1 inline"
                 alt=""
               />
             </summary>
             <ol className="lower-alpha-bracket">
               <li>
                 If you use MS Office 365, try clicking the following link:
-                <blockquote>
+                <div className="ml-7">
                   <a
-                    className="font-bold"
                     href={`https://outlook.office.com/calendar/0/addfromweb?name=${encodeURIComponent(calendarName)}&url=${encodeURIComponent(icsHttpsUrl)}`}
                   >
                     Add to Outlook calendar
                   </a>
-                </blockquote>
+                </div>
               </li>
               <li>
                 If you use the free Outlook.com, try clicking the following
                 link:
-                <blockquote>
+                <div className="ml-7">
                   <a
-                    className="font-bold"
                     href={`https://outlook.live.com/calendar/0/addfromweb?name=${encodeURIComponent(calendarName)}&url=${encodeURIComponent(icsHttpsUrl)}`}
                   >
                     Add to Outlook.com calendar
                   </a>
-                </blockquote>
+                </div>
               </li>
               <li>
                 If neither of those work, try clicking the following link:
-                <blockquote>
-                  <a className="font-bold" href={icsWebcalUrl}>
-                    Add to calendar
-                  </a>
-                </blockquote>
+                <div className="ml-7">
+                  <a href={icsWebcalUrl}>Add to calendar</a>
+                </div>
               </li>
               <li>
                 If that doesn’t work,{" "}
@@ -327,11 +315,11 @@ export default function Page() {
                   follow your calendar’s instructions
                 </a>{" "}
                 to <em>subscribe</em> to the following ICS (iCal) URL:
-                <blockquote>
+                <div className="ml-7">
                   <a className="break-all" href={icsHttpsUrl}>
                     {icsHttpsUrl}
                   </a>
-                </blockquote>
+                </div>
               </li>
             </ol>
             <p className="note-callout">
@@ -344,20 +332,18 @@ export default function Page() {
             <ol className="lower-alpha-bracket">
               <li>
                 Try clicking the following link:
-                <blockquote>
-                  <a className="font-bold" href={icsWebcalUrl}>
-                    Add to calendar
-                  </a>
-                </blockquote>
+                <div className="ml-7">
+                  <a href={icsWebcalUrl}>Add to calendar</a>
+                </div>
               </li>
               <li>
                 If that doesn’t work, follow your calendar’s instructions to
                 subscribe to the following ICS (iCal) URL:
-                <blockquote>
+                <div className="ml-7">
                   <a className="break-all" href={icsHttpsUrl}>
                     {icsHttpsUrl}
                   </a>
-                </blockquote>
+                </div>
               </li>
             </ol>
             <p className="note-callout">
