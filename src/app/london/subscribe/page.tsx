@@ -18,11 +18,11 @@ export default function Page() {
   // This is the "Get shareable link" (which is accessible by anyone whilst
   // "Make available to public" remains ticked; if that were unticked only
   // people under "Share with specific people or groups" would have access).
+  // Not proxied, so that people get instant event updates.
   const googleCalendarUrl =
     "https://calendar.google.com/calendar?cid=NDUzYmRhNzgyOWZiMWIwMThhZjYyZGYyNmYyNTNlNjI2N2ZlOTZlNDY3ZDM0ZTZhN2Q0ODBiMmVlMTA4YjU0NEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t";
-  // This is the "Public address in iCal format".
-  const icsHttpsUrl =
-    "https://calendar.google.com/calendar/ical/453bda7829fb1b018af62df26f253e6267fe96e467d34e6a7d480b2ee108b544%40group.calendar.google.com/public/basic.ics";
+  // This is the "Public address in iCal format" (proxied for future-proofing).
+  const icsHttpsUrl = "https://cicalendar.uk/feeds/london.ics";
   const icsWebcalUrl = icsHttpsUrl.replace("https://", "webcal://");
   return (
     <>
