@@ -16,6 +16,11 @@ export default function Page() {
           <NavBar breadcrumb={[["About"]]} />
 
           <div className="prose">
+            <p className="mt-3">
+              A calendar that aggregates CI events from all the London
+              teachers/organisers.
+            </p>
+
             <p className="mt-3">Made with ❤️ by Sim and John.</p>
 
             <p className="mt-3">
