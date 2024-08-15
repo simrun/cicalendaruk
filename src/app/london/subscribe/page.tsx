@@ -235,7 +235,7 @@ export default function Page() {
           </details>
           <details className="expandable">
             <summary>
-              Apple Calendar{" "}
+              iOS/macOS Calendar app{" "}
               <img
                 src="/apple-icon-24dp.svg"
                 width="18"
@@ -244,15 +244,6 @@ export default function Page() {
                 alt=""
               />
             </summary>
-            <p className="italic">
-              If you’re viewing this page on iOS and you also use Apple Calendar
-              on macOS,{" "}
-              <a href="https://support.apple.com/en-gb/102301#:~:text=Before%20you%20can%20see%20a%20calendar%20subscription%20on%20all%20your%20devices%2C%20first%20subscribe%20to%20the%20calendar%20on%20your%20Mac.%20If%20you%20subscribe%20to%20the%20calendar%20on%20your%20iOS%20device%2C%20iCloud%20won%27t%20update%20it%20to%20your%20other%20devices.">
-                it’s better to subscribe from your Mac
-              </a>
-              . Send a link to <Link href="#">the current page</Link> to your
-              Mac and continue in its browser.
-            </p>
             <ol>
               <li>
                 Click the following link:
@@ -262,22 +253,25 @@ export default function Page() {
                   </a>
                 </blockquote>
               </li>
-              <li>Choose iCloud from the Location menu, if applicable.</li>
+              <li>Choose iCloud from the Location dropdown, if applicable.</li>
+              <li>
+                Choose a short interval from the Auto-refresh dropdown, if
+                applicable.
+              </li>
             </ol>
-            <p className="font-bold">
-              TODO: Please can someone confirm to John that this works on iOS
-              (and that this fails to sync to macOS)?
+            <p>
+              If you subscribed on iOS, you’ll need to subscribe separately on
+              any other Apple devices you use. If you subscribed on macOS and
+              chose iCloud from the Location dropdown, it{" "}
+              <a href="https://support.apple.com/en-gb/102301">should sync</a>{" "}
+              to your other Apple devices.
             </p>
-            <p className="font-bold">
-              TODO: Please can someone confirm to John that this works on macOS
-              (and syncs to iOS)?
+            <p className="tip-callout">
+              Once added you should be able to easily show/hide the CI Calendar
+              London calendar by toggling its checkbox. On iOS this is in the
+              Calendars list at the bottom of the screen. On macOS this is in
+              the left sidebar.
             </p>
-            {/*
-            If clicking the link doesn't work, copy-pasting the ICS URL into the New Calendar Subscription menu might work:
-            https://support.apple.com/en-us/102301. And that page has the ominous warning:
-            > Before you can see a calendar subscription on all your devices, subscribe to the calendar on your Mac first.
-            > If you subscribe to the calendar on your iOS device, iCloud won't update it to your other devices.
-            */}
             <p className="note-callout">
               New/updated events might take several hours to sync to your
               calendar. On macOS, Apple Calendar lets you choose the
