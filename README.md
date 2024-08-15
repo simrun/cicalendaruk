@@ -22,3 +22,5 @@ The app is deployed on Cloudflare Pages. To build and test locally against the C
 
 1. Run `npx @cloudflare/next-on-pages` to build
 1. Preview using `npx wrangler pages dev .vercel/output/static`
+
+If environment variables change, update them in [Cloudflare dashboard > Workers & Pages > cicalendaruk > Settings > Environment variables](https://dash.cloudflare.com/?to=/:account/pages/view/cicalendaruk/settings/environment-variables).
