@@ -8,6 +8,7 @@ export default function NavBar({
 }: {
   breadcrumb: NameUrlClass[];
 }) {
+  const linkStyle = "font-medium underline hover:bg-black hover:text-white";
   const breadcrumbAsText = breadcrumb.map(([name, ..._]) => name).join(" > ");
   const isAbout = breadcrumbAsText === "About";
   return (
@@ -15,7 +16,7 @@ export default function NavBar({
       <Link
         // Home is always a link, but is displayed as text except on the About page
         // where users might get stuck without a link back to the calendar.
-        className={isAbout ? "" : "text-inherit"}
+        className={isAbout ? linkStyle : "text-inherit"}
         style={isAbout ? {} : { textDecoration: "inherit" }}
         href="/"
       >
@@ -26,10 +27,7 @@ export default function NavBar({
         <span key={url ?? name} className={className}>
           &nbsp;›&nbsp;
           {url ? (
-            <Link
-              className="text-sky-500 underline hover:text-sky-400"
-              href={url}
-            >
+            <Link className={linkStyle} href={url}>
               {name}
             </Link>
           ) : (
@@ -40,7 +38,7 @@ export default function NavBar({
       {!isAbout && (
         <span className="flex-1 ps-1 text-right">
           <Link
-            className="hover:text-sky-400relative bottom-0.5 text-base text-sky-500 underline"
+            className={`relative bottom-0.5 text-base ${linkStyle}`}
             href="/about"
           >
             About
