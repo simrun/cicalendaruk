@@ -42,7 +42,16 @@ export default function Page() {
           </p>
           <p>Select your calendar app to see instructions:</p>
           <details className="expandable">
-            <summary>Google Calendar</summary>
+            <summary>
+              Google Calendar{" "}
+              <img
+                src="/google-calendar-icon-24dp.svg"
+                width="18"
+                height="18"
+                className="relative bottom-[calc(2rem/16)] ml-0.5 inline"
+                alt=""
+              />
+            </summary>
             <p className="italic">
               If you’re viewing this page on a desktop/laptop computer but you
               also use Google Calendar on an Android phone, it’s easier to
@@ -225,7 +234,16 @@ export default function Page() {
             </p>
           </details>
           <details className="expandable">
-            <summary>Apple Calendar</summary>
+            <summary>
+              Apple Calendar{" "}
+              <img
+                src="/apple-icon-24dp.svg"
+                width="18"
+                height="18"
+                className="relative bottom-[calc(3rem/16)] ml-0.5 inline"
+                alt=""
+              />
+            </summary>
             <p className="italic">
               If you’re viewing this page on iOS and you also use Apple Calendar
               on macOS,{" "}
@@ -267,7 +285,16 @@ export default function Page() {
             </p>
           </details>
           <details className="expandable">
-            <summary>Microsoft Outlook</summary>
+            <summary>
+              Microsoft Outlook{" "}
+              <img
+                src="/outlook-icon-24dp.svg"
+                width="18"
+                height="18"
+                className="relative bottom-[calc(2rem/16)] ml-1 inline"
+                alt=""
+              />
+            </summary>
             <ol className="lower-alpha-bracket">
               <li>
                 If you use MS Office 365, try clicking the following link:
