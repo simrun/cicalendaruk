@@ -35,7 +35,7 @@
   padding: 0.25em 0.45em;
 }
 @media (max-width: 599px) {
-  /* Wrap "add to my calendar" button onto two lines.
+  /* Wrap "subscribe to calendar" button onto two lines.
      And expand other buttons to match. */
   .fc .fc-button {
     padding: 6px 4px;
