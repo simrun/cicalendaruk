@@ -40,10 +40,19 @@
   .fc .fc-button {
     padding: 6px 4px;
   }
-  .fc .fc-addToCalendar-button {
+  .fc .fc-subscribe-button {
     white-space: pre-wrap;
     line-height: 1;
     padding: calc(6px - 0.25em) 0.45em;
+  }
+  @media (max-width: 360px) {
+    .fc .fc-subscribe-button {
+      padding-left: 0.125em;
+      padding-right: 0.125em;
+    }
+    .fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
+      margin-left: 0.5em;
+    }
   }
   @media (min-width: 340px) {
     .fc :is(.fc-prev-button, .fc-next-button) {

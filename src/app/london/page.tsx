@@ -199,11 +199,11 @@ export default function Page() {
           height="100%"
           headerToolbar={{
             start: "title",
-            end: "addToCalendar today prev,next",
+            end: "subscribe today prev,next",
           }}
           customButtons={{
-            addToCalendar: {
-              text: "add to my\ncalendar",
+            subscribe: {
+              text: "subscribe to\ncalendar",
               click: () => router.push("/london/subscribe"),
             },
           }}
