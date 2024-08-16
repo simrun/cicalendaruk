@@ -5,16 +5,6 @@
 
 @import "fullcalendar.css";
 
-@layer base {
-  @counter-style lower-alpha-bracket {
-    system: extends lower-alpha;
-    suffix: ") ";
-  }
-  ol.lower-alpha-bracket {
-    list-style: lower-alpha-bracket;
-  }
-}
-
 @layer components {
   details.expandable {
     border: 1px solid #aaa;
@@ -52,5 +42,15 @@
   }
   .tip-callout::before {
     content: "💡 ";
+  }
+}
+
+@layer utilities {
+  @counter-style lower-alpha-bracket {
+    system: extends lower-alpha;
+    suffix: ") ";
+  }
+  .lower-alpha-bracket {
+    list-style: lower-alpha-bracket;
   }
 }
