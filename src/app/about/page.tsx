@@ -15,15 +15,15 @@ export default function Page() {
         <div className="max-w-prose">
           <NavBar breadcrumb={[["About"]]} />
 
-          <div className="prose">
-            <p className="mt-3">
+          <div className="prose py-3">
+            <p>
               A calendar that aggregates CI events from all the London
               teachers/organisers.
             </p>
 
-            <p className="mt-3">Made with ❤️ by Sim and John.</p>
+            <p>Made with ❤️ by Sim and John.</p>
 
-            <p className="mt-3">
+            <p>
               Source code on{" "}
               <Link
                 className="underline"
