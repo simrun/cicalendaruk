@@ -168,6 +168,11 @@ const eventSources = [
     textColor: "black",
   },
   {
+    url: "/feeds/mariechabert.ics",
+    format: "ics",
+    color: "salmon",
+  },
+  {
     url: "/feeds/london-misc.ics",
     format: "ics",
     color: "green",

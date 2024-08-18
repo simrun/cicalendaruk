@@ -6,6 +6,7 @@ const icsPathToEnvVar: Map<string, string> = new Map([
   // These feeds are inputs to the calendar that we are proxying:
   ["/feeds/ricknodine.ics", "ICS_URL_RICKNODINE"],
   ["/feeds/cigoldsmiths.ics", "ICS_URL_CIGOLDSMITHS"],
+  ["/feeds/mariechabert.ics", "ICS_URL_MARIECHABERT"],
   ["/feeds/london-misc.ics", "ICS_URL_LONDON_MISC"],
 
   // DO NOT CHANGE. Users subscribe to these URLs that proxy the auto-merger:
