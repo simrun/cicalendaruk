@@ -25,6 +25,11 @@
   background-color: #f5f6f5;
 }
 
+/* Avoid scrollbar and layout shift when events are clicked. */
+.fc .fc-event-selected::after, .fc .fc-event:focus::after {
+  inset: 0px; /* instead of -1px */
+}
+
 .fc .fc-toolbar-title {
   padding-left: 0.25rem;
   font-size: 1.5rem;
