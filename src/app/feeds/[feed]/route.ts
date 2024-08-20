@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import { notFound } from "next/navigation";
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
