@@ -34,18 +34,26 @@ export async function GET(
   }
 
   const res = await fetch(targetUrl, {
-    // Our proxy caches for up to 2 minutes (unless you have "Disable cache"
-    // enabled in Chrome DevTools, presumably because that causes Chrome to send
-    // `Cache-Control: no-cache` and `Pragma: no-cache` request headers.)
-    next: { revalidate: 2 * 60 },
+    // For now, don't cache proxied ICS files server-side, so that editors see
+    // the results of their edits immediately. If we wanted to cache files for
+    // e.g. 60 seconds we could instead use `next: { revalidate: 60 },` but note
+    // that NextJS uses stale-while-revalidate semantics (see
+    // https://nextjs.org/docs/app/building-your-application/caching#time-based-revalidation)
+    // so the first request after it expires will see arbitrarily(?) stale data.
+    // (For debugging server-side caching, note that enabling "Disable cache" in
+    // Chrome DevTools bypasses this server-side cache, presumably because that
+    // causes Chrome to send `Cache-Control: no-cache` and `Pragma: no-cache`
+    // request headers.)
+    cache: "no-store",
   });
 
   return new NextResponse(res.body, {
     headers: {
-      // Let clients cache for a further 1 minute (unless you have "Disable cache"
-      // enabled in Chrome DevTools, or whilst Chrome DevTools is open you
-      // right-click the Reload button and select "Empty cache and hard reload".)
-      "Cache-Control": "max-age=60",
+      // Don't let browsers cache these feeds either. (If we did increase
+      // max-age, you could bypass the client-side cache by enabling "Disable
+      // cache" in Chrome DevTools, or whilst Chrome DevTools is open
+      // right-click the Reload button & select "Empty cache and hard reload".)
+      "Cache-Control": "max-age=0",
       "Content-Type": "text/calendar; charset=utf-8",
       "X-Content-Type-Options": "nosniff",
     },
