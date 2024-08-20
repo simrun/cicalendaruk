@@ -49,11 +49,12 @@ export async function GET(
 
   return new NextResponse(res.body, {
     headers: {
-      // Don't let browsers cache these feeds either. (If we did increase
-      // max-age, you could bypass the client-side cache by enabling "Disable
-      // cache" in Chrome DevTools, or whilst Chrome DevTools is open
-      // right-click the Reload button & select "Empty cache and hard reload".)
-      "Cache-Control": "max-age=0",
+      // Only let browsers cache these feeds for a few seconds, which seems to
+      // be the minimum for preloading to work on a Slow 4G connection. (You
+      // can bypass the client-side cache by enabling "Disable cache" in Chrome
+      // DevTools, or whilst Chrome DevTools is open right-click the Reload
+      // button & select "Empty cache and hard reload".)
+      "Cache-Control": "max-age=4",
       "Content-Type": "text/calendar; charset=utf-8",
       "X-Content-Type-Options": "nosniff",
     },
