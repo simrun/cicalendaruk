@@ -9,7 +9,6 @@ import iCalendarPlugin from "@fullcalendar/icalendar";
 import FullCalendar from "@fullcalendar/react";
 
 import { useRouter } from "next/navigation";
-import { preload } from "react-dom";
 
 import NavBar from "@/components/NavBar";
 
@@ -187,13 +186,6 @@ const eventSources = [
 
 export default function Page() {
   const router = useRouter();
-
-  for (let source of eventSources) {
-    preload(source.url, {
-      as: "fetch",
-      crossOrigin: "anonymous",
-    });
-  }
 
   return (
     <div className="flex h-svh flex-col">
