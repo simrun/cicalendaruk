@@ -6,24 +6,24 @@ import { NextRequest } from "next/server";
 
 const icsPathToEnvVar: Map<string, string> = new Map([
   // These feeds are inputs to the calendar that we are proxying:
-  ["/feeds/ricknodine.ics", "ICS_URL_RICKNODINE"],
-  ["/feeds/cigoldsmiths.ics", "ICS_URL_CIGOLDSMITHS"],
-  ["/feeds/mariechabert.ics", "ICS_URL_MARIECHABERT"],
-  ["/feeds/london-misc.ics", "ICS_URL_LONDON_MISC"],
+  ["ricknodine.ics", "ICS_URL_RICKNODINE"],
+  ["cigoldsmiths.ics", "ICS_URL_CIGOLDSMITHS"],
+  ["mariechabert.ics", "ICS_URL_MARIECHABERT"],
+  ["london-misc.ics", "ICS_URL_LONDON_MISC"],
 
   // DO NOT CHANGE. Users subscribe to these URLs that proxy the auto-merger:
-  ["/feeds/london.ics", "ICS_URL_LONDON"],
+  ["london.ics", "ICS_URL_LONDON"],
 
   // These feeds are currently just inputs but might one day also be exposed for
   // users to subscribe to?
-  ["/feeds/uk.ics", "ICS_URL_UK"],
+  ["uk.ics", "ICS_URL_UK"],
 ]);
 
 export async function GET(
   request: NextRequest,
   { params: { feed } }: { params: { feed: string } },
 ): Promise<Response> {
-  const envVar = icsPathToEnvVar.get("/feeds/" + feed);
+  const envVar = icsPathToEnvVar.get(feed);
   if (!envVar) notFound();
 
   const targetUrl = process.env[envVar];
