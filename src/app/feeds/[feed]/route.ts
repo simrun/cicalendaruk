@@ -44,7 +44,7 @@ export async function GET(
     // Chrome DevTools bypasses this server-side cache, presumably because that
     // causes Chrome to send `Cache-Control: no-cache` and `Pragma: no-cache`
     // request headers.)
-    cache: "no-store",
+    next: { revalidate: 0 }, // Using this instead of the more idiomatic `cache: "no-store",` due to https://github.com/cloudflare/workerd/issues/698
   });
 
   return new NextResponse(res.body, {
