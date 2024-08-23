@@ -173,7 +173,7 @@ const eventSources = [
     color: "salmon",
   },
   {
-    url: "/feeds/london-misc.ics",
+    url: "/feeds/london-manual.ics",
     format: "ics",
     color: "green",
   },

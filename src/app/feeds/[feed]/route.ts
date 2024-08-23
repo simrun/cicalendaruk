@@ -9,14 +9,13 @@ const icsPathToEnvVar: Map<string, string> = new Map([
   ["ricknodine.ics", "ICS_URL_RICKNODINE"],
   ["cigoldsmiths.ics", "ICS_URL_CIGOLDSMITHS"],
   ["mariechabert.ics", "ICS_URL_MARIECHABERT"],
-  ["london-misc.ics", "ICS_URL_LONDON_MISC"],
+  ["london-manual.ics", "ICS_URL_LONDON_MANUAL"],
+  ["uk.ics", "ICS_URL_UK"],
 
   // DO NOT CHANGE. Users subscribe to these URLs that proxy the auto-merger:
+  // TODO: Change these URLs to be of the form subscribe.ics?london=all&restofuk=multiday
   ["london.ics", "ICS_URL_LONDON"],
-
-  // These feeds are currently just inputs but might one day also be exposed for
-  // users to subscribe to?
-  ["uk.ics", "ICS_URL_UK"],
+  ["london_uk.ics", "ICS_URL_LONDON_UK"],
 ]);
 
 export async function GET(
