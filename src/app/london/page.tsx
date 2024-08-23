@@ -178,7 +178,7 @@ const eventSources = [
     color: "green",
   },
   {
-    url: "/feeds/uk.ics",
+    url: "/feeds/uk-manual.ics",
     format: "ics",
     color: "red",
   },
