@@ -19,7 +19,7 @@ export default function Page() {
   const calendarName = () =>
     includeRestOfUK ? "CI Calendar London & UK" : "CI Calendar London";
   const icsHttpsUrl = () =>
-    `https://cicalendar.uk/feeds/london${includeRestOfUK ? "-uk" : ""}.ics`;
+    `https://cicalendar.uk/subscribe.ics?london=all${includeRestOfUK ? "&restofuk=multiday" : ""}`;
   const icsWebcalUrl = () => icsHttpsUrl().replace("https://", "webcal://");
   const googleCalendarUrl = () =>
     `https://calendar.google.com/calendarr?cid=${encodeURIComponent(icsHttpsUrl())}`;
