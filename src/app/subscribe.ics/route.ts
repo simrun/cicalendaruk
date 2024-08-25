@@ -49,9 +49,11 @@ export async function GET(request: NextRequest): Promise<Response> {
 
   return new NextResponse(res.body, {
     headers: {
-      // Let calendars cache these feeds for 1 hour (though they'll probably
-      // ignore that and pick their own update interval).
-      "Cache-Control": "max-age=3600",
+      // Match other ICS providers in disallowing caching. Calendars still seem
+      // to choose their own update intervals despite that.
+      // TODO: Could support If-Modified-Since/If-None-Match to save bandwidth:
+      // https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching#validation
+      "Cache-Control": "max-age=0, private, must-revalidate",
       "Content-Type": "text/calendar; charset=utf-8",
       "X-Content-Type-Options": "nosniff",
     },
