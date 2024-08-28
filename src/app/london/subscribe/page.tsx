@@ -16,13 +16,12 @@ export default function Page() {
 
   const [includeRestOfUK, setIncludeRestOfUK] = useState(true);
 
-  const calendarName = () =>
-    includeRestOfUK ? "CI Calendar London & UK" : "CI Calendar London";
-  const icsHttpsUrl = () =>
-    `https://cicalendar.uk/subscribe.ics?london=all${includeRestOfUK ? "&restofuk=multiday" : ""}`;
-  const icsWebcalUrl = () => icsHttpsUrl().replace("https://", "webcal://");
-  const googleCalendarUrl = () =>
-    `https://calendar.google.com/calendarr?cid=${encodeURIComponent(icsHttpsUrl())}`;
+  const calendarName = includeRestOfUK
+    ? "CI Calendar London & UK"
+    : "CI Calendar London";
+  const icsHttpsUrl = `https://cicalendar.uk/subscribe.ics?london=all${includeRestOfUK ? "&restofuk=multiday" : ""}`;
+  const icsWebcalUrl = icsHttpsUrl.replace("https://", "webcal://");
+  const googleCalendarUrl = `https://calendar.google.com/calendarr?cid=${encodeURIComponent(icsHttpsUrl)}`;
 
   return (
     <>
@@ -95,7 +94,7 @@ export default function Page() {
                 <li>
                   Click the following link:
                   <div className="ml-7">
-                    <a href={googleCalendarUrl()}>Add to Google Calendar</a>
+                    <a href={googleCalendarUrl}>Add to Google Calendar</a>
                   </div>
                 </li>
                 <li>
@@ -104,8 +103,8 @@ export default function Page() {
                 </li>
               </ol>
               <p>
-                You should now see the “{calendarName()}” calendar appear in
-                your list of calendars on both Android and web.
+                You should now see the “{calendarName}” calendar appear in your
+                list of calendars on both Android and web.
               </p>
             </details>
             <details className="expandable">
@@ -129,7 +128,7 @@ export default function Page() {
                 <li>
                   Click the following link:
                   <div className="ml-7">
-                    <a href={googleCalendarUrl()}>Add to Google Calendar</a>
+                    <a href={googleCalendarUrl}>Add to Google Calendar</a>
                   </div>
                 </li>
                 <li>
@@ -143,8 +142,8 @@ export default function Page() {
                 </li>
               </ol>
               <p>
-                You should now see the “{calendarName()}” calendar appear in
-                your list of calendars on both iOS and web.
+                You should now see the “{calendarName}” calendar appear in your
+                list of calendars on both iOS and web.
               </p>
               <p className="font-bold">
                 TODO: Please can someone confirm to John that this works on iOS?
@@ -156,7 +155,7 @@ export default function Page() {
                 <li>
                   Click the following link:
                   <div className="ml-7">
-                    <a href={googleCalendarUrl()}>Add to Google Calendar</a>
+                    <a href={googleCalendarUrl}>Add to Google Calendar</a>
                   </div>
                 </li>
                 <li>
@@ -165,8 +164,8 @@ export default function Page() {
                 </li>
               </ol>
               <p>
-                You should now see the “{calendarName()}” calendar appear in
-                your list of calendars on web.
+                You should now see the “{calendarName}” calendar appear in your
+                list of calendars on web.
               </p>
               <p>
                 If you also have Android phones/tablets, you’ll additionally
@@ -212,7 +211,7 @@ export default function Page() {
                   .
                 </li>
                 <li>
-                  Tap “{calendarName()}”. If you don’t find the calendar listed,
+                  Tap “{calendarName}”. If you don’t find the calendar listed,
                   tap “Show more”.
                 </li>
                 <li>At the top of the page, make sure Sync is on.</li>
@@ -256,7 +255,7 @@ export default function Page() {
               <li>
                 Click the following link:
                 <div className="ml-7">
-                  <a href={icsWebcalUrl()}>Add to calendar</a>
+                  <a href={icsWebcalUrl}>Add to calendar</a>
                 </div>
               </li>
               <li>Choose iCloud from the Location dropdown, if applicable.</li>
@@ -300,7 +299,7 @@ export default function Page() {
                 If you use MS Office 365, try clicking the following link:
                 <div className="ml-7">
                   <a
-                    href={`https://outlook.office.com/calendar/0/addfromweb?name=${encodeURIComponent(calendarName())}&url=${encodeURIComponent(icsHttpsUrl())}`}
+                    href={`https://outlook.office.com/calendar/0/addfromweb?name=${encodeURIComponent(calendarName)}&url=${encodeURIComponent(icsHttpsUrl)}`}
                   >
                     Add to Outlook calendar
                   </a>
@@ -311,7 +310,7 @@ export default function Page() {
                 link:
                 <div className="ml-7">
                   <a
-                    href={`https://outlook.live.com/calendar/0/addfromweb?name=${encodeURIComponent(calendarName())}&url=${encodeURIComponent(icsHttpsUrl())}`}
+                    href={`https://outlook.live.com/calendar/0/addfromweb?name=${encodeURIComponent(calendarName)}&url=${encodeURIComponent(icsHttpsUrl)}`}
                   >
                     Add to Outlook.com calendar
                   </a>
@@ -320,7 +319,7 @@ export default function Page() {
               <li>
                 If neither of those work, try clicking the following link:
                 <div className="ml-7">
-                  <a href={icsWebcalUrl()}>Add to calendar</a>
+                  <a href={icsWebcalUrl}>Add to calendar</a>
                 </div>
               </li>
               <li>
@@ -330,8 +329,8 @@ export default function Page() {
                 </a>{" "}
                 to <em>subscribe</em> to the following ICS (iCal) URL:
                 <div className="ml-7">
-                  <a className="break-all" href={icsHttpsUrl()}>
-                    {icsHttpsUrl()}
+                  <a className="break-all" href={icsHttpsUrl}>
+                    {icsHttpsUrl}
                   </a>
                 </div>
               </li>
@@ -347,15 +346,15 @@ export default function Page() {
               <li>
                 Try clicking the following link:
                 <div className="ml-7">
-                  <a href={icsWebcalUrl()}>Add to calendar</a>
+                  <a href={icsWebcalUrl}>Add to calendar</a>
                 </div>
               </li>
               <li>
                 If that doesn’t work, follow your calendar’s instructions to
                 subscribe to the following ICS (iCal) URL:
                 <div className="ml-7">
-                  <a className="break-all" href={icsHttpsUrl()}>
-                    {icsHttpsUrl()}
+                  <a className="break-all" href={icsHttpsUrl}>
+                    {icsHttpsUrl}
                   </a>
                 </div>
               </li>
