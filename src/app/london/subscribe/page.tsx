@@ -73,8 +73,8 @@ export default function Page() {
               in your phone’s browser.
             </p>
             <p>Select your platform:</p>
-            <details className="expandable">
-              <summary>To subscribe on Android</summary>
+            <Expandable>
+              <Expandable.Summary>To subscribe on Android</Expandable.Summary>
               <ol>
                 <li>
                   Make sure you have the{" "}
@@ -106,9 +106,11 @@ export default function Page() {
                 You should now see the “{calendarName}” calendar appear in your
                 list of calendars on both Android and web.
               </p>
-            </details>
-            <details className="expandable">
-              <summary>To subscribe on iPhone/iPad</summary>
+            </Expandable>
+            <Expandable>
+              <Expandable.Summary>
+                To subscribe on iPhone/iPad
+              </Expandable.Summary>
               <ol>
                 <li>
                   Make sure you have the{" "}
@@ -148,9 +150,11 @@ export default function Page() {
               <p className="font-bold">
                 TODO: Please can someone confirm to John that this works on iOS?
               </p>
-            </details>
-            <details className="expandable">
-              <summary>To subscribe on a computer</summary>
+            </Expandable>
+            <Expandable>
+              <Expandable.Summary>
+                To subscribe on a computer
+              </Expandable.Summary>
               <ol>
                 <li>
                   Click the following link:
@@ -224,7 +228,7 @@ export default function Page() {
                 </a>
                 .)
               </p>
-            </details>
+            </Expandable>
             <p className="tip-callout">
               Once added you should be able to easily show/hide the CI Calendar
               London calendar by toggling its checkbox in the left-hand sidebar.
@@ -240,8 +244,8 @@ export default function Page() {
               “Show more”.)
             </p>
           </Expandable>
-          <details className="expandable">
-            <summary>
+          <Expandable>
+            <Expandable.Summary>
               iOS/macOS Calendar app{" "}
               <img
                 src="/apple-icon-24dp.svg"
@@ -250,7 +254,7 @@ export default function Page() {
                 className="not-prose relative bottom-[calc(3rem/16)] ml-0.5 inline"
                 alt=""
               />
-            </summary>
+            </Expandable.Summary>
             <ol>
               <li>
                 Click the following link:
@@ -282,9 +286,9 @@ export default function Page() {
               calendar. On macOS, Apple Calendar lets you choose the
               “Auto-refresh” frequency for each calendar you add.
             </p>
-          </details>
-          <details className="expandable">
-            <summary>
+          </Expandable>
+          <Expandable>
+            <Expandable.Summary>
               Microsoft Outlook{" "}
               <img
                 src="/outlook-icon-24dp.svg"
@@ -293,7 +297,7 @@ export default function Page() {
                 className="not-prose relative bottom-[calc(2rem/16)] ml-1 inline"
                 alt=""
               />
-            </summary>
+            </Expandable.Summary>
             <ol className="lower-alpha-bracket">
               <li>
                 If you use MS Office 365, try clicking the following link:
@@ -339,9 +343,9 @@ export default function Page() {
               New/updated events might take several hours to sync to your
               calendar.
             </p>
-          </details>
-          <details className="expandable">
-            <summary>Other</summary>
+          </Expandable>
+          <Expandable>
+            <Expandable.Summary>Other</Expandable.Summary>
             <ol className="lower-alpha-bracket">
               <li>
                 Try clicking the following link:
@@ -363,7 +367,7 @@ export default function Page() {
               New/updated events might take several hours to sync to your
               calendar.
             </p>
-          </details>
+          </Expandable>
         </div>
       </div>
     </>
