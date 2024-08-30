@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 function Expandable({ children }: { children: ReactNode }) {
   return (
-    <details className="group rounded border border-gray-400 p-3">
+    <details className="rounded border border-gray-400 p-3">
       {children}
     </details>
   );
