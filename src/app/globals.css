@@ -6,31 +6,6 @@
 @import "fullcalendar.css";
 
 @layer components {
-  details.expandable {
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    padding: 0.75em 0.75em 0;
-  }
-  details.expandable > summary {
-    font-weight: bold;
-    margin: -0.75em -0.75em 0;
-    padding: 0.75em;
-    cursor: pointer;
-  }
-  details.expandable[open] {
-    padding: 0.75em;
-  }
-  details.expandable[open] > summary {
-    border-bottom: 1px solid #aaa;
-    margin-bottom: 0.75em;
-  }
-  details.expandable > summary + * {
-    margin-top: 0;
-  }
-  details.expandable > :last-child:not(summary) {
-    margin-bottom: 0;
-  }
-
   .note-callout {
     @apply rounded border border-l-4 border-blue-500 bg-blue-50 p-4;
   }

@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { useState } from "react";
 
+import Expandable from "@/components/Expandable";
 import NavBar from "@/components/NavBar";
 
 export default function Page() {
@@ -53,17 +54,20 @@ export default function Page() {
             </label>
           </div>
           <p>Then select your calendar app to see instructions:</p>
-          <details className="expandable">
-            <summary>
-              Google Calendar{" "}
-              <img
-                src="/google-calendar-icon-24dp.svg"
-                width="18"
-                height="18"
-                className="not-prose relative bottom-[calc(2rem/16)] ml-0.5 inline"
-                alt=""
-              />
-            </summary>
+          <Expandable
+            summary={
+              <>
+                Google Calendar{" "}
+                <img
+                  src="/google-calendar-icon-24dp.svg"
+                  width="18"
+                  height="18"
+                  className="not-prose relative bottom-[calc(2rem/16)] ml-0.5 inline"
+                  alt=""
+                />
+              </>
+            }
+          >
             <p className="italic">
               If you’re viewing this page on a desktop/laptop computer but you
               also use Google Calendar on an Android phone, it’s easier to
@@ -238,7 +242,7 @@ export default function Page() {
               to show the sidebar; on mobile, the calendar might appear under
               “Show more”.)
             </p>
-          </details>
+          </Expandable>
           <details className="expandable">
             <summary>
               iOS/macOS Calendar app{" "}
