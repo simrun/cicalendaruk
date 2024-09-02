@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { useState } from "react";
 
+import Callout from "@/components/Callout";
 import Expandable from "@/components/Expandable";
 import NavBar from "@/components/NavBar";
 
@@ -229,7 +230,7 @@ export default function Page() {
                 .)
               </p>
             </Expandable>
-            <p className="tip-callout">
+            <Callout type="tip">
               Once added you should be able to easily show/hide the CI Calendar
               London calendar by toggling its checkbox in the left-hand sidebar.
               (Click{" "}
@@ -242,7 +243,7 @@ export default function Page() {
               />{" "}
               to show the sidebar; on mobile, the calendar might appear under
               “Show more”.)
-            </p>
+            </Callout>
           </Expandable>
           <Expandable>
             <Expandable.Summary>
@@ -275,17 +276,17 @@ export default function Page() {
               <a href="https://support.apple.com/en-gb/102301">should sync</a>{" "}
               to your other Apple devices.
             </p>
-            <p className="tip-callout">
+            <Callout type="tip">
               Once added you should be able to easily show/hide the CI Calendar
               London calendar by toggling its checkbox. On iOS this is in the
               Calendars list at the bottom of the screen. On macOS this is in
               the left sidebar.
-            </p>
-            <p className="note-callout">
+            </Callout>
+            <Callout type="note">
               New/updated events might take several hours to sync to your
               calendar. On macOS, Apple Calendar lets you choose the
               “Auto-refresh” frequency for each calendar you add.
-            </p>
+            </Callout>
           </Expandable>
           <Expandable>
             <Expandable.Summary>
@@ -339,10 +340,10 @@ export default function Page() {
                 </div>
               </li>
             </ol>
-            <p className="note-callout">
+            <Callout type="note">
               New/updated events might take several hours to sync to your
               calendar.
-            </p>
+            </Callout>
           </Expandable>
           <Expandable>
             <Expandable.Summary>Other</Expandable.Summary>
@@ -363,10 +364,10 @@ export default function Page() {
                 </div>
               </li>
             </ol>
-            <p className="note-callout">
+            <Callout type="note">
               New/updated events might take several hours to sync to your
               calendar.
-            </p>
+            </Callout>
           </Expandable>
         </div>
       </div>
