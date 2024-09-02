@@ -6,6 +6,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "CI Calendar UK",
   description: "Calendar of contact improvisation events in the UK",
+  // Absolute URL needed for opengraph images; seems to be ignored in dev
+  // WhatsApp image requirements: https://developers.facebook.com/docs/whatsapp/link-previews/
   metadataBase: new URL("https://cicalendar.uk/"),
 };
 
