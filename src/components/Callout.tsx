@@ -13,9 +13,9 @@ function Callout({
       : "border-green-500 bg-green-50";
 
   return (
-    <div className={`rounded border border-l-4 ${borders} p-4`}>
+    <blockquote className={`rounded border border-l-4 ${borders} p-3`}>
       {type === "note" ? "ℹ️" : "💡"} {children}
-    </div>
+    </blockquote>
   );
 }
 
