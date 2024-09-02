@@ -6,6 +6,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "CI Calendar UK",
   description: "Calendar of contact improvisation events in the UK",
+  metadataBase: new URL("https://cicalendar.uk/"),
 };
 
 export default function RootLayout({
