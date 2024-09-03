@@ -43,6 +43,8 @@ function addEventUrl(eventData: EventInput) {
   //     'Prev line<br><a href="https://domain.com/path?a=b&amp;c=d#hash">https://domain.com/path?a=b&amp;c=d#hash</a><br>Next line'
   // We have to detect which in order to know how to decode it!
   if (/<br>|<\/a>/.test(description)) {
+    // Strip <wbr /> tags. We've seen these break up an otherwise valid URL.
+    description = description.replace(/<wbr \/>/g, "");
     // Strip HTML tags, replacing them with whitespace rather than nothing since
     // tags like <br> and <p> often act as spacing.
     description = description.replace(/(<([^>]+)>)/gi, " ");
@@ -197,7 +199,10 @@ export default function Page() {
           initialView="dayGridMonth"
           firstDay={1}
           eventSources={eventSources}
-          eventDataTransform={addEventUrl}
+          eventDataTransform={(e) => {
+            console.log(e);
+            return addEventUrl(e);
+          }}
           eventDisplay="block"
           eventClassNames={classNamesForEvent}
           displayEventTime={false}
