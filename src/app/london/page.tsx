@@ -36,7 +36,7 @@ function addEventUrl(eventData: EventInput) {
   }
 
   // Finally try to use the first URL found in the description field.
-  let description = (eventData.extendedProps?.description as string) ?? "";
+  let description = eventData.extendedProps?.description as string;
   // The description field set by Google Calendar is sometimes plain text, like:
   //     'Prev line\nhttps://domain.com/path?a=b&c=d#hash\nNext line'
   // and sometimes HTML, like:
