@@ -23,6 +23,12 @@ export default function Page() {
   const icsHttpsUrl = `https://cicalendar.uk/subscribe.ics?london=all${includeRestOfUK ? "&restofuk=multiday" : ""}`;
   const icsWebcalUrl = icsHttpsUrl.replace("https://", "webcal://");
   const googleCalendarUrl = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(icsWebcalUrl)}`;
+  const googleCalendarUrl2 = `https://www.google.com/calendar/render?cid=${encodeURIComponent(icsWebcalUrl)}`;
+  const googleCalendarUrl3 = `https://www.google.com/calendar/render?cid=${icsWebcalUrl}`;
+  const googleCalendarUrl4 = `https://www.google.com/calendar/render?cid=${encodeURIComponent(icsWebcalUrl.replace("webcal:", "http:"))}`;
+  const googleCalendarUrl5 = `https://www.google.com/calendar/render?cid=${icsWebcalUrl.replace("webcal:", "http:")}`;
+  const googleCalendarUrl6 = `https://calendar.google.com/calendar/render?cid=${encodeURIComponent(icsWebcalUrl)}`;
+  const googleCalendarUrl7 = `https://calendar.google.com/calendar/render?cid=${icsWebcalUrl}`;
 
   return (
     <>
@@ -96,6 +102,24 @@ export default function Page() {
                   Click the following link:
                   <div className="ml-7">
                     <a href={googleCalendarUrl}>Add to Google Calendar</a>
+                  </div>
+                  <div className="mt-4 ml-7">
+                    <a href={googleCalendarUrl2}>Add to Google Calendar 2</a>
+                  </div>
+                  <div className="mt-4 ml-7">
+                    <a href={googleCalendarUrl3}>Add to Google Calendar 3</a>
+                  </div>
+                  <div className="mt-4 ml-7">
+                    <a href={googleCalendarUrl4}>Add to Google Calendar 4</a>
+                  </div>
+                  <div className="mt-4 ml-7">
+                    <a href={googleCalendarUrl5}>Add to Google Calendar 5</a>
+                  </div>
+                  <div className="mt-4 ml-7">
+                    <a href={googleCalendarUrl6}>Add to Google Calendar 6</a>
+                  </div>
+                  <div className="mt-4 ml-7">
+                    <a href={googleCalendarUrl7}>Add to Google Calendar 7</a>
                   </div>
                 </li>
                 <li>
