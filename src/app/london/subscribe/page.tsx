@@ -86,7 +86,7 @@ export default function Page() {
                   </div>
                 </li>
                 <li>
-                  Now switch to the Google Calendar tab you just opened. You should be on the Google Calendar <em>website</em> (not app!).
+                  Now switch to the Google Calendar tab you just opened (e.g. by swiping the address bar leftwards). You should be on the Google Calendar <em>website</em> (not app!).
                 </li>
                 <li>
                   Accept the prompt it shows to add the calendar.
