@@ -22,13 +22,13 @@ export default function Page() {
     : "CI Calendar London";
   const icsHttpsUrl = `https://cicalendar.uk/subscribe.ics?london=all${includeRestOfUK ? "&restofuk=multiday" : ""}`;
   const icsWebcalUrl = icsHttpsUrl.replace("https://", "webcal://");
+  // Only seems to work (on desktop web) with webcal or http (not https) scheme :-|
+  // Using /render instead of /r seems better supported on Android at first
+  // glance (after the Google Calendar app opens, instead of doing nothing it
+  // asks if you want to add the calendar) but this only provides false hope
+  // since as of Sept 2024 adding ICS calendars on Android always fails. So
+  // stick to /r which at least fails slightly more obviously.
   const googleCalendarUrl = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(icsWebcalUrl)}`;
-  const googleCalendarUrl2 = `https://www.google.com/calendar/render?cid=${encodeURIComponent(icsWebcalUrl)}`;
-  const googleCalendarUrl3 = `https://www.google.com/calendar/render?cid=${icsWebcalUrl}`;
-  const googleCalendarUrl4 = `https://www.google.com/calendar/render?cid=${encodeURIComponent(icsWebcalUrl.replace("webcal:", "http:"))}`;
-  const googleCalendarUrl5 = `https://www.google.com/calendar/render?cid=${icsWebcalUrl.replace("webcal:", "http:")}`;
-  const googleCalendarUrl6 = `https://calendar.google.com/calendar/render?cid=${encodeURIComponent(icsWebcalUrl)}`;
-  const googleCalendarUrl7 = `https://calendar.google.com/calendar/render?cid=${icsWebcalUrl}`;
 
   return (
     <>
@@ -72,64 +72,73 @@ export default function Page() {
                 alt=""
               />
             </Expandable.Summary>
-            <p className="italic">
-              If you’re viewing this page on a desktop/laptop computer but you
-              also use Google Calendar on an Android phone, it’s easier to
-              subscribe from the Android phone. Send a link to{" "}
-              <Link href="#">the current page</Link> to your phone and continue
-              in your phone’s browser.
-            </p>
             <p>Select your platform:</p>
             <Expandable>
               <Expandable.Summary>To subscribe on Android</Expandable.Summary>
+              <p className="italic">
+                If you are signed in to multiple Google Accounts, you'll need to subscribe on a computer instead.
+              </p>
               <ol>
                 <li>
-                  Make sure you have the{" "}
-                  <a href="https://play.google.com/store/apps/details?id=com.google.android.calendar">
-                    Google&nbsp;Calendar&nbsp;app
-                  </a>
-                  &nbsp;
+                  <em>Long-press</em> the following link and select <em>"Open in new tab"</em> (it won't work if you just click it):
+                  <div className="ml-7">
+                    <a href={googleCalendarUrl}>Add to Google Calendar</a>
+                  </div>
+                </li>
+                <li>
+                  Now switch to the Google Calendar tab you just opened. You should be on the Google Calendar <em>website</em> (not app!).
+                </li>
+                <li>
+                  Accept the prompt it shows to add the calendar.
+                </li>
+                <li>
+                  Wait up to a minute, for the events to show up.
+                </li>
+                <li>
+                  Open the Google Calendar app&nbsp;
                   <img
                     src="/google-calendar-icon-24dp.svg"
                     width="18"
                     height="18"
                     className="my-0 inline"
                     alt=""
-                  />{" "}
-                  installed.
+                  />.
                 </li>
                 <li>
-                  Click the following link:
-                  <div className="ml-7">
-                    <a href={googleCalendarUrl}>Add to Google Calendar</a>
-                  </div>
-                  <div className="mt-4 ml-7">
-                    <a href={googleCalendarUrl2}>Add to Google Calendar 2</a>
-                  </div>
-                  <div className="mt-4 ml-7">
-                    <a href={googleCalendarUrl3}>Add to Google Calendar 3</a>
-                  </div>
-                  <div className="mt-4 ml-7">
-                    <a href={googleCalendarUrl4}>Add to Google Calendar 4</a>
-                  </div>
-                  <div className="mt-4 ml-7">
-                    <a href={googleCalendarUrl5}>Add to Google Calendar 5</a>
-                  </div>
-                  <div className="mt-4 ml-7">
-                    <a href={googleCalendarUrl6}>Add to Google Calendar 6</a>
-                  </div>
-                  <div className="mt-4 ml-7">
-                    <a href={googleCalendarUrl7}>Add to Google Calendar 7</a>
-                  </div>
+                  In the top left, tap Menu{" "}
+                  <img
+                    src="/android-menu-icon-24dp.png"
+                    width="18"
+                    height="18"
+                    className="my-0 inline"
+                    alt=""
+                  />
+                  .
                 </li>
                 <li>
-                  The Google Calendar app should open. Accept the prompt it
-                  shows to add the calendar.
+                  Tap Settings{" "}
+                  <img
+                    src="/android-settings-icon-24dp.png"
+                    width="18"
+                    height="18"
+                    className="my-0 inline"
+                    alt=""
+                  />
+                  .
                 </li>
+                <li>
+                  Tap “{calendarName}”. If you don’t find the calendar listed,
+                  tap “Show more”.
+                </li>
+                <li>At the top of the page, make sure Sync is on.</li>
               </ol>
               <p>
-                You should now see the “{calendarName}” calendar appear in your
-                list of calendars on both Android and web.
+                Note: It might take some time for your events to show up after
+                you turn on sync. (If you still have trouble, try{" "}
+                <a href="https://support.google.com/calendar/answer/6261951">
+                  Google’s sync troubleshooting tips
+                </a>
+                .)
               </p>
             </Expandable>
             <Expandable>
@@ -137,6 +146,7 @@ export default function Page() {
                 To subscribe on iPhone/iPad
               </Expandable.Summary>
               <ol>
+                {/*
                 <li>
                   Make sure you have the{" "}
                   <a href="https://apps.apple.com/gb/app/google-calendar-get-organised/id909319292">
@@ -152,6 +162,7 @@ export default function Page() {
                   />{" "}
                   installed.
                 </li>
+                */}
                 <li>
                   Click the following link:
                   <div className="ml-7">
@@ -162,7 +173,7 @@ export default function Page() {
                   {/*
                   It'll open in the browser according to
                   https://support.google.com/calendar/answer/37100?co=GENIE.Platform%3DiOS#:~:text=Google%20Calendar%20opens%20in%20a%20browser
-                  So perhaps making sure the app is installed above is unnecessary?
+                  Hence making sure the app is installed above is commented out.
                   */}
                   Google Calendar should open. Accept the prompt it shows to add
                   the calendar.
@@ -188,8 +199,13 @@ export default function Page() {
                   </div>
                 </li>
                 <li>
-                  The Google Calendar website should open. Accept the prompt it
-                  shows to add the calendar.
+                  The Google Calendar website should open, and show a prompt to add the calendar.
+                </li>
+                <li className="italic">
+                  If you are signed in to multiple Google Accounts, check that the profile photo in the top right is the account you want to use. If not, click Cancel on the prompt, switch account by clicking your profile photo, and then the prompt to add the calendar should reappear.
+                </li>
+                <li>
+                  Accept the prompt to add the calendar.
                 </li>
               </ol>
               <p>
@@ -306,11 +322,6 @@ export default function Page() {
               Calendars list at the bottom of the screen. On macOS this is in
               the left sidebar.
             </Callout>
-            <Callout type="note">
-              New/updated events might take several hours to sync to your
-              calendar. On macOS, Apple Calendar lets you choose the
-              “Auto-refresh” frequency for each calendar you add.
-            </Callout>
           </Expandable>
           <Expandable>
             <Expandable.Summary>
@@ -364,10 +375,6 @@ export default function Page() {
                 </div>
               </li>
             </ol>
-            <Callout type="note">
-              New/updated events might take several hours to sync to your
-              calendar.
-            </Callout>
           </Expandable>
           <Expandable>
             <Expandable.Summary>Other</Expandable.Summary>
@@ -388,11 +395,11 @@ export default function Page() {
                 </div>
               </li>
             </ol>
-            <Callout type="note">
-              New/updated events might take several hours to sync to your
-              calendar.
-            </Callout>
           </Expandable>
+          <Callout type="note">
+            New/updated events might take several hours to sync to your
+            calendar.
+          </Callout>
         </div>
       </div>
     </>
