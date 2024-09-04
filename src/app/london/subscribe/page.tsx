@@ -76,11 +76,11 @@ export default function Page() {
             <Expandable>
               <Expandable.Summary>To subscribe on Android</Expandable.Summary>
               <p className="italic">
-                If you are signed in to multiple Google Accounts, you'll need to subscribe on a computer instead.
+                If you are signed in to multiple Google Accounts, you’ll need to subscribe on a computer instead.
               </p>
               <ol>
                 <li>
-                  <em>Long-press</em> the following link and select <em>"Open in new tab"</em> (it won't work if you just click it):
+                  <em>Long-press</em> the following link and select <em>“Open in new tab”</em> (it won’t work if you just click it):
                   <div className="ml-7">
                     <a href={googleCalendarUrl}>Add to Google Calendar</a>
                   </div>
