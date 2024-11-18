@@ -10,6 +10,7 @@ import dayGrid from "@fullcalendar/daygrid";
 import iCalendarPlugin from "@fullcalendar/icalendar";
 import FullCalendar from "@fullcalendar/react";
 import { usePathname, useRouter } from "next/navigation";
+import { ComponentProps } from "react";
 
 const isMapUrlRegex =
   /(?:google\.com|goo\.gl)\/maps|maps\.(?:google|apple|app\.goo\.gl)/;
@@ -158,9 +159,8 @@ function dateToTitle(date: Date): string {
 
 export default function Calendar({
   eventSources,
-}: {
-  eventSources: EventSourceInput[];
-}) {
+  ...rest
+}: { eventSources: EventSourceInput[] } & ComponentProps<typeof FullCalendar>) {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -195,6 +195,7 @@ export default function Calendar({
         info.jsEvent.preventDefault();
         if (info.event.url) window.open(info.event.url, "_blank");
       }}
+      {...rest}
     />
   );
 }
