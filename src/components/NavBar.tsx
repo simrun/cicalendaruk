@@ -6,7 +6,7 @@ export type NameUrlClass = [string, string?, string?];
 export default function NavBar({
   breadcrumb = [],
 }: {
-  breadcrumb: NameUrlClass[];
+  breadcrumb?: NameUrlClass[];
 }) {
   const linkStyle = "font-medium underline hover:bg-black hover:text-white";
   const breadcrumbAsText = breadcrumb.map(([name, ..._]) => name).join(" > ");

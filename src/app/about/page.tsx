@@ -10,32 +10,28 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <>
-      <div className="m-auto max-w-fit">
-        <div className="max-w-prose">
-          <NavBar breadcrumb={[["About"]]} />
+    <div className="m-auto max-w-prose">
+      <NavBar breadcrumb={[["About"]]} />
 
-          <div className="prose py-3">
-            <p>
-              A calendar that aggregates CI events from all the London
-              teachers/organisers.
-            </p>
+      <div className="prose py-3">
+        <p>
+          A calendar that aggregates CI events from all the London
+          teachers/organisers.
+        </p>
 
-            <p>Made with ❤️ by Sim and John.</p>
+        <p>Made with ❤️ by Sim and John.</p>
 
-            <p>
-              Source code on{" "}
-              <Link
-                className="underline"
-                href="https://github.com/simrun/cicalendaruk"
-              >
-                Github
-              </Link>
-              .
-            </p>
-          </div>
-        </div>
+        <p>
+          Source code on{" "}
+          <Link
+            className="underline"
+            href="https://github.com/simrun/cicalendaruk"
+          >
+            Github
+          </Link>
+          .
+        </p>
       </div>
-    </>
+    </div>
   );
 }
