@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="m-auto max-w-prose">
-      <NavBar breadcrumb={[["About"]]} />
+      <NavBar />
 
       <div className="prose py-3">
         <p>
