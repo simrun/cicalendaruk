@@ -9,7 +9,7 @@ export default function Page() {
       <div className="prose">
         <ul>
           <li className="list-['🌉']">
-            <Link href={"/bristol"}>Bristol & Southwest</Link>
+            <Link href={"/bristol"}>Bristol</Link>
           </li>
           <li className="list-['🚇']">
             <Link href={"/london"}>London</Link>

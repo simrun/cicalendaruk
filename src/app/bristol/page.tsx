@@ -3,7 +3,7 @@ import RegionPage from "@/components/RegionPage";
 export default function Page() {
   return (
     <RegionPage
-      name="Bristol & Southwest"
+      name="Bristol"
       eventSources={
         [
           // TODO: add manual feed for Bristol
