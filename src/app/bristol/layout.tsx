@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Bristol & Southwest | CI Calendar UK",
-  description:
-    "Calendar of Contact Improvisation events in Bristol and the Southwest",
+  title: "Bristol | CI Calendar UK",
+  description: "Calendar of Contact Improvisation events in Bristol",
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
