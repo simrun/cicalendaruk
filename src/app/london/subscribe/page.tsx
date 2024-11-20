@@ -42,7 +42,7 @@ export default function Page() {
           ]}
         />
 
-        <div className="prose prose-blockquote:font-normal">
+        <div className="prose mt-1 prose-blockquote:font-normal">
           <p>
             You can subscribe to this calendar so the latest CI events in London
             automatically appear in your calendar app.

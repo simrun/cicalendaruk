@@ -8,7 +8,7 @@ export default function Page() {
     <MaxWidthContainer>
       <NavBar />
       <div className="prose">
-        <p>Weekly calendar of contact improvisation events.</p>
+        <p className="mt-1">Weekly calendar of contact improvisation events.</p>
 
         <p className="mb-0">Select a region:</p>
         <ul className="mt-0">
