@@ -5,5 +5,5 @@ export default function MaxWidthContainer({
 }: {
   children: ReactNode;
 }) {
-  return <div className="m-auto max-w-prose px-2">{children}</div>;
+  return <div className="m-auto max-w-prose px-1">{children}</div>;
 }

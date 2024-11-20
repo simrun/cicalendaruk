@@ -12,7 +12,9 @@ export default function RegionPage({
 } & ComponentProps<typeof Calendar>) {
   return (
     <div className="flex h-svh flex-col">
-      <NavBar breadcrumb={[[name]]} />
+      <div className="px-1">
+        <NavBar breadcrumb={[[name]]} />
+      </div>
 
       <div className="flex-1">
         <Calendar eventSources={eventSources} {...rest} />
