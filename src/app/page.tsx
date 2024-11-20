@@ -24,7 +24,10 @@ export default function Page() {
           <p>Made with 🤍 by Sim and John.</p>
           <p>
             Source code on{" "}
-            <Link href="https://github.com/simrun/cicalendaruk">Github</Link>.
+            <Link href="https://github.com/simrun/cicalendaruk" target="_blank">
+              Github
+            </Link>
+            .
           </p>
         </div>
       </div>
