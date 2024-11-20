@@ -8,6 +8,7 @@ import { useState } from "react";
 
 import Callout from "@/components/Callout";
 import Expandable from "@/components/Expandable";
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 import NavBar from "@/components/NavBar";
 
 export default function Page() {
@@ -32,7 +33,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="m-auto max-w-prose">
+      <MaxWidthContainer>
         <NavBar
           breadcrumb={[
             ["London", "/london"],
@@ -41,7 +42,7 @@ export default function Page() {
           ]}
         />
 
-        <div className="prose mt-3 p-1 prose-blockquote:font-normal">
+        <div className="prose prose-blockquote:font-normal">
           <p>
             You can subscribe to this calendar so the latest CI events in London
             automatically appear in your calendar app.
@@ -76,24 +77,25 @@ export default function Page() {
             <Expandable>
               <Expandable.Summary>To subscribe on Android</Expandable.Summary>
               <p className="italic">
-                If you are signed in to multiple Google Accounts, you’ll need to subscribe on a computer instead.
+                If you are signed in to multiple Google Accounts, you’ll need to
+                subscribe on a computer instead.
               </p>
               <ol>
                 <li>
-                  <em>Long-press</em> the following link and select <em>“Open in new tab”</em> (it won’t work if you just click it):
+                  <em>Long-press</em> the following link and select{" "}
+                  <em>“Open in new tab”</em> (it won’t work if you just click
+                  it):
                   <div className="ml-7">
                     <a href={googleCalendarUrl}>Add to Google Calendar</a>
                   </div>
                 </li>
                 <li>
-                  Now switch to the Google Calendar tab you just opened (e.g. by swiping the address bar leftwards). You should be on the Google Calendar <em>website</em> (not app!).
+                  Now switch to the Google Calendar tab you just opened (e.g. by
+                  swiping the address bar leftwards). You should be on the
+                  Google Calendar <em>website</em> (not app!).
                 </li>
-                <li>
-                  Accept the prompt it shows to add the calendar.
-                </li>
-                <li>
-                  Wait up to a minute, for the events to show up.
-                </li>
+                <li>Accept the prompt it shows to add the calendar.</li>
+                <li>Wait up to a minute, for the events to show up.</li>
                 <li>
                   Open the Google Calendar app&nbsp;
                   <img
@@ -102,7 +104,8 @@ export default function Page() {
                     height="18"
                     className="my-0 inline"
                     alt=""
-                  />.
+                  />
+                  .
                 </li>
                 <li>
                   In the top left, tap Menu{" "}
@@ -199,14 +202,17 @@ export default function Page() {
                   </div>
                 </li>
                 <li>
-                  The Google Calendar website should open, and show a prompt to add the calendar.
+                  The Google Calendar website should open, and show a prompt to
+                  add the calendar.
                 </li>
                 <li className="italic">
-                  If you are signed in to multiple Google Accounts, check that the profile photo in the top right is the account you want to use. If not, click Cancel on the prompt, switch account by clicking your profile photo, and then the prompt to add the calendar should reappear.
+                  If you are signed in to multiple Google Accounts, check that
+                  the profile photo in the top right is the account you want to
+                  use. If not, click Cancel on the prompt, switch account by
+                  clicking your profile photo, and then the prompt to add the
+                  calendar should reappear.
                 </li>
-                <li>
-                  Accept the prompt to add the calendar.
-                </li>
+                <li>Accept the prompt to add the calendar.</li>
               </ol>
               <p>
                 You should now see the “{calendarName}” calendar appear in your
@@ -401,7 +407,7 @@ export default function Page() {
             calendar.
           </Callout>
         </div>
-      </div>
+      </MaxWidthContainer>
     </>
   );
 }
