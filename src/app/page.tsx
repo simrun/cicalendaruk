@@ -1,10 +1,11 @@
 import Link from "next/link";
 
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 import NavBar from "@/components/NavBar";
 
 export default function Page() {
   return (
-    <div className="m-auto max-w-prose px-2 py-1">
+    <MaxWidthContainer>
       <NavBar />
 
       <div className="prose">
@@ -19,6 +20,6 @@ export default function Page() {
           </li>
         </ul>
       </div>
-    </div>
+    </MaxWidthContainer>
   );
 }

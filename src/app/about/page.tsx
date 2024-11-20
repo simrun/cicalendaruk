@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import MaxWidthContainer from "@/components/MaxWidthContainer";
 import NavBar from "@/components/NavBar";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="m-auto max-w-prose">
+    <MaxWidthContainer>
       <NavBar />
 
       <div className="prose py-3">
@@ -32,6 +33,6 @@ export default function Page() {
           .
         </p>
       </div>
-    </div>
+    </MaxWidthContainer>
   );
 }
