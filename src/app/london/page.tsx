@@ -22,6 +22,11 @@ export default function Page() {
           color: "salmon",
         },
         {
+          url: "/feeds/markrietema.ics",
+          format: "ics",
+          color: "orange",
+        },
+        {
           url: "/feeds/london-manual.ics",
           format: "ics",
           color: "green",
