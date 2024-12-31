@@ -37,6 +37,12 @@ function addEventUrl(eventData: EventInput) {
 
   // Finally try to use the first URL found in the description field.
   let description = eventData.extendedProps?.description as string;
+  if (!description) {
+    console.log(
+      `Warning: Event has no URL in its description: ${eventData.title} at ${eventData.start}`,
+    );
+    return eventData;
+  }
   // The description field set by Google Calendar is sometimes plain text, like:
   //     'Prev line\nhttps://domain.com/path?a=b&c=d#hash\nNext line'
   // and sometimes HTML, like:
@@ -170,9 +176,7 @@ export default function Calendar({
       initialView="dayGridMonth"
       firstDay={1}
       eventSources={eventSources}
-      eventDataTransform={(e) => {
-        return addEventUrl(e);
-      }}
+      eventDataTransform={addEventUrl}
       eventDisplay="block"
       eventClassNames={classNamesForEvent}
       displayEventTime={false}
