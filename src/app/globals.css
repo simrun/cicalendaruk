@@ -1,9 +1,9 @@
+@import "fullcalendar.css";
+
 /* Tailwind utility classes */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import "fullcalendar.css";
 
 @layer utilities {
   @counter-style lower-alpha-bracket {

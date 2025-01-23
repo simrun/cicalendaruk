@@ -17,8 +17,10 @@ const icsPathToEnvVar: Map<string, string> = new Map([
 
 export async function GET(
   request: NextRequest,
-  { params: { feed } }: { params: { feed: string } },
+  { params }: { params: Promise<{ feed: string }> },
 ): Promise<Response> {
+  const { feed } = await params;
+
   const envVar = icsPathToEnvVar.get(feed);
   if (!envVar) notFound();
 
