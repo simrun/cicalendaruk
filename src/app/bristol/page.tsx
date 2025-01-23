@@ -11,11 +11,6 @@ export default function Page() {
           color: "green",
         },
       ]}
-      // disable subscribe link as we haven't built it for this region yet
-      headerToolbar={{
-        start: "title",
-        end: "today prev,next",
-      }}
     />
   );
 }

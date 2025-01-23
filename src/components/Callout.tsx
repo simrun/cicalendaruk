@@ -14,7 +14,8 @@ function Callout({
 
   return (
     <blockquote className={`rounded border border-l-4 ${borders} p-3`}>
-      {type === "note" ? "ℹ️" : "💡"} {children}
+      <span className="not-italic">{type === "note" ? "ℹ️" : "💡"}</span>{" "}
+      {children}
     </blockquote>
   );
 }

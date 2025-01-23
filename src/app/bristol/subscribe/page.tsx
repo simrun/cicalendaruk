@@ -16,12 +16,8 @@ export default function Page() {
   // the major calendar apps. This was gathered from many sources, including:
   // https://stackoverflow.com/questions/75119105/how-to-create-a-subscribtion-link-to-ics-webcal-calendars
 
-  const [includeRestOfUK, setIncludeRestOfUK] = useState(true);
-
-  const calendarName = includeRestOfUK
-    ? "CI Calendar London & UK"
-    : "CI Calendar London";
-  const icsHttpsUrl = `https://cicalendar.uk/subscribe.ics?london=all${includeRestOfUK ? "&restofuk=multiday" : ""}`;
+  const calendarName = "bristolcontactimprov@gmail.com";
+  const icsHttpsUrl = "https://cicalendar.uk/subscribe.ics?bristol=all";
   const icsWebcalUrl = icsHttpsUrl.replace("https://", "webcal://");
   // Only seems to work (on desktop web) with webcal or http (not https) scheme :-|
   // Using /render instead of /r seems better supported on Android at first
@@ -36,7 +32,7 @@ export default function Page() {
       <MaxWidthContainer>
         <NavBar
           breadcrumb={[
-            ["London", "/london"],
+            ["Bristol", "/bristol"],
             // There isn't room to append Subscribe on mobile.
             ["Subscribe", undefined, "max-[519px]:hidden"],
           ]}
@@ -44,24 +40,10 @@ export default function Page() {
 
         <div className="prose mt-1 prose-blockquote:font-normal">
           <p>
-            You can subscribe to this calendar so the latest CI events in London
-            automatically appear in your calendar app.
+            You can subscribe to this calendar so the latest CI events in
+            Bristol automatically appear in your calendar app.
           </p>
-          <p className="mb-0">
-            Choose whether to include events from the rest of the UK:
-          </p>
-          <div className="ml-7">
-            <input
-              type="checkbox"
-              id="include-rest-of-uk"
-              checked={includeRestOfUK}
-              onChange={(e) => setIncludeRestOfUK(e.target.checked)}
-            />{" "}
-            <label htmlFor="include-rest-of-uk">
-              Include rest of UK (multi-day intensives and CI festivals only)
-            </label>
-          </div>
-          <p>Then select your calendar app to see instructions:</p>
+          <p>Select your calendar app to see instructions:</p>
           <Expandable>
             <Expandable.Summary>
               Google Calendar{" "}

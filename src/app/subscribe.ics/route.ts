@@ -7,29 +7,37 @@ import { NextRequest } from "next/server";
 // DO NOT DROP SUPPORT FOR PREVIOUS URLS as users subscribe to these URLs.
 export async function GET(request: NextRequest): Promise<Response> {
   const searchParams = request.nextUrl.searchParams;
+  let envVar;
 
-  const allowedParams = new Set(["london", "restofuk"]);
-  for (const key of searchParams.keys()) {
-    if (!allowedParams.has(key)) {
-      // Unsupported parameters were used.
+  if (searchParams.size === 1 && searchParams.has("bristol")) {
+    // n.b. restofuk is not currently supported for Bristol.
+    if (searchParams.get("bristol") !== "all") {
+      notFound(); // We don't yet support more granular filtering.
+    }
+    envVar = "ICS_URL_BRISTOL_MANUAL"; // There is no merged feed for Bristol.
+  } else {
+    const allowedParams = new Set(["london", "restofuk"]);
+    for (const key of searchParams.keys()) {
+      if (!allowedParams.has(key)) {
+        // Unsupported parameters were used.
+        notFound();
+      }
+    }
+
+    if (searchParams.get("london") !== "all") {
+      // We don't yet support more granular filtering. Nor do we support computing
+      // UK-only (since that would require filtering the London feeds).
       notFound();
     }
-  }
 
-  if (searchParams.get("london") !== "all") {
-    // We don't yet support more granular filtering. Nor do we support computing
-    // UK-only (since that would require filtering the London feeds).
-    notFound();
-  }
-
-  let envVar;
-  if (searchParams.get("restofuk") === "multiday") {
-    envVar = "ICS_URL_LONDON_UK";
-  } else if (searchParams.get("restofuk") === null) {
-    envVar = "ICS_URL_LONDON";
-  } else {
-    // Unsupported parameter value.
-    notFound();
+    if (searchParams.get("restofuk") === "multiday") {
+      envVar = "ICS_URL_LONDON_UK";
+    } else if (searchParams.get("restofuk") === null) {
+      envVar = "ICS_URL_LONDON";
+    } else {
+      // Unsupported parameter value.
+      notFound();
+    }
   }
 
   const targetUrl = process.env[envVar];
