@@ -11,6 +11,7 @@ const icsPathToEnvVar: Map<string, string> = new Map([
   ["mariechabert.ics", "ICS_URL_MARIECHABERT"],
   ["markrietema.ics", "ICS_URL_MARKRIETEMA"],
   ["bristol-manual.ics", "ICS_URL_BRISTOL_MANUAL"],
+  ["brighton.ics", "ICS_URL_BRIGHTON"],
   ["london-manual.ics", "ICS_URL_LONDON_MANUAL"],
   ["uk-manual.ics", "ICS_URL_UK_MANUAL"],
 ]);
