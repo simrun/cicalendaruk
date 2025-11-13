@@ -12,8 +12,8 @@ export default function Page() {
   // the major calendar apps. This was gathered from many sources, including:
   // https://stackoverflow.com/questions/75119105/how-to-create-a-subscribtion-link-to-ics-webcal-calendars
 
-  const calendarName = "bristolcontactimprov@gmail.com";
-  const icsHttpsUrl = "https://cicalendar.uk/subscribe.ics?bristol=all";
+  const calendarName = "Brighton Contact Improvisation";
+  const icsHttpsUrl = "https://cicalendar.uk/subscribe.ics?brighton=all";
   const icsWebcalUrl = icsHttpsUrl.replace("https://", "webcal://");
   // Only seems to work (on desktop web) with webcal or http (not https) scheme :-|
   // Using /render instead of /r seems better supported on Android at first
@@ -28,7 +28,7 @@ export default function Page() {
       <MaxWidthContainer>
         <NavBar
           breadcrumb={[
-            ["Bristol", "/bristol"],
+            ["Brighton", "/brighton"],
             // There isn't room to append Subscribe on mobile.
             ["Subscribe", undefined, "max-[519px]:hidden"],
           ]}
@@ -37,7 +37,7 @@ export default function Page() {
         <div className="prose mt-1 prose-blockquote:font-normal">
           <p>
             You can subscribe to this calendar so the latest CI events in
-            Bristol automatically appear in your calendar app.
+            Brighton automatically appear in your calendar app.
           </p>
           <p>Select your calendar app to see instructions:</p>
           <Expandable>

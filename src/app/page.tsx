@@ -12,6 +12,9 @@ export default function Page() {
 
         <p className="mb-0">Select a region:</p>
         <ul className="mt-0">
+          <li className="list-['🌊']">
+            <Link href={"/brighton"}>Brighton</Link>
+          </li>
           <li className="list-['🌉']">
             <Link href={"/bristol"}>Bristol</Link>
           </li>
