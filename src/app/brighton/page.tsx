@@ -6,7 +6,7 @@ export default function Page() {
       name="Brighton"
       eventSources={[
         {
-          url: "/feeds/brighton.ics",
+          url: "/feeds/brighton-movingstillness.ics",
           format: "ics",
           color: "teal",
         },

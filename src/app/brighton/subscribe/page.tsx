@@ -9,7 +9,8 @@ import NavBar from "@/components/NavBar";
 
 export default function Page() {
   const calendarName = "Brighton Contact Improvisation";
-  const icsHttpsUrl = "https://cicalendar.uk/feeds/brighton.ics";
+  const icsHttpsUrl =
+    "https://cicalendar.uk/feeds/brighton-movingstillness.ics";
   const icsWebcalUrl = icsHttpsUrl.replace("https://", "webcal://");
   const googleCalendarUrl = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(icsWebcalUrl)}`;
 

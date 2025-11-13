@@ -6,12 +6,12 @@ import { NextRequest } from "next/server";
 
 const icsPathToEnvVar: Map<string, string> = new Map([
   // These feeds are inputs to the calendar that we are proxying:
+  ["brighton-movingstillness.ics", "ICS_URL_BRIGHTON_MOVINGSTILLNESS"],
+  ["bristol-manual.ics", "ICS_URL_BRISTOL_MANUAL"],
   ["ricknodine.ics", "ICS_URL_RICKNODINE"],
   ["cigoldsmiths.ics", "ICS_URL_CIGOLDSMITHS"],
   ["mariechabert.ics", "ICS_URL_MARIECHABERT"],
   ["markrietema.ics", "ICS_URL_MARKRIETEMA"],
-  ["bristol-manual.ics", "ICS_URL_BRISTOL_MANUAL"],
-  ["brighton.ics", "ICS_URL_BRIGHTON"],
   ["london-manual.ics", "ICS_URL_LONDON_MANUAL"],
   ["uk-manual.ics", "ICS_URL_UK_MANUAL"],
 ]);
