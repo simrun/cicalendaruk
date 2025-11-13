@@ -2,10 +2,6 @@
 
 /* eslint-disable @next/next/no-img-element */
 
-import Link from "next/link";
-
-import { useState } from "react";
-
 import Callout from "@/components/Callout";
 import Expandable from "@/components/Expandable";
 import MaxWidthContainer from "@/components/MaxWidthContainer";

@@ -8,10 +8,19 @@ import MaxWidthContainer from "@/components/MaxWidthContainer";
 import NavBar from "@/components/NavBar";
 
 export default function Page() {
+  // There isn't good documentation on how to build subscribe to ICS links for
+  // the major calendar apps. This was gathered from many sources, including:
+  // https://stackoverflow.com/questions/75119105/how-to-create-a-subscribtion-link-to-ics-webcal-calendars
+
   const calendarName = "Brighton Contact Improvisation";
-  const icsHttpsUrl =
-    "https://cicalendar.uk/feeds/brighton-movingstillness.ics";
+  const icsHttpsUrl = "https://cicalendar.uk/subscribe.ics?brighton=all";
   const icsWebcalUrl = icsHttpsUrl.replace("https://", "webcal://");
+  // Only seems to work (on desktop web) with webcal or http (not https) scheme :-|
+  // Using /render instead of /r seems better supported on Android at first
+  // glance (after the Google Calendar app opens, instead of doing nothing it
+  // asks if you want to add the calendar) but this only provides false hope
+  // since as of Sept 2024 adding ICS calendars on Android always fails. So
+  // stick to /r which at least fails slightly more obviously.
   const googleCalendarUrl = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(icsWebcalUrl)}`;
 
   return (
@@ -118,6 +127,23 @@ export default function Page() {
                 To subscribe on iPhone/iPad
               </Expandable.Summary>
               <ol>
+                {/*
+                <li>
+                  Make sure you have the{" "}
+                  <a href="https://apps.apple.com/gb/app/google-calendar-get-organised/id909319292">
+                    Google&nbsp;Calendar&nbsp;app
+                  </a>
+                  &nbsp;
+                  <img
+                    src="/google-calendar-icon-24dp.svg"
+                    width="18"
+                    height="18"
+                    className="my-0 inline"
+                    alt=""
+                  />{" "}
+                  installed.
+                </li>
+                */}
                 <li>
                   Click the following link:
                   <div className="ml-7">
@@ -125,6 +151,11 @@ export default function Page() {
                   </div>
                 </li>
                 <li>
+                  {/*
+                  It'll open in the browser according to
+                  https://support.google.com/calendar/answer/37100?co=GENIE.Platform%3DiOS#:~:text=Google%20Calendar%20opens%20in%20a%20browser
+                  Hence making sure the app is installed above is commented out.
+                  */}
                   Google Calendar should open. Accept the prompt it shows to add
                   the calendar.
                 </li>
@@ -292,9 +323,7 @@ export default function Page() {
                 If you use MS Office 365, try clicking the following link:
                 <div className="ml-7">
                   <a
-                    href={`https://outlook.office.com/calendar/0/addfromweb?name=${encodeURIComponent(
-                      calendarName,
-                    )}&url=${encodeURIComponent(icsHttpsUrl)}`}
+                    href={`https://outlook.office.com/calendar/0/addfromweb?name=${encodeURIComponent(calendarName)}&url=${encodeURIComponent(icsHttpsUrl)}`}
                   >
                     Add to Outlook calendar
                   </a>
@@ -305,9 +334,7 @@ export default function Page() {
                 link:
                 <div className="ml-7">
                   <a
-                    href={`https://outlook.live.com/calendar/0/addfromweb?name=${encodeURIComponent(
-                      calendarName,
-                    )}&url=${encodeURIComponent(icsHttpsUrl)}`}
+                    href={`https://outlook.live.com/calendar/0/addfromweb?name=${encodeURIComponent(calendarName)}&url=${encodeURIComponent(icsHttpsUrl)}`}
                   >
                     Add to Outlook.com calendar
                   </a>

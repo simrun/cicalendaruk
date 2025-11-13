@@ -9,12 +9,20 @@ export async function GET(request: NextRequest): Promise<Response> {
   const searchParams = request.nextUrl.searchParams;
   let envVar;
 
-  if (searchParams.size === 1 && searchParams.has("bristol")) {
+  if (searchParams.size === 1 && searchParams.has("brighton")) {
+    // n.b. restofuk is not currently supported for Brighton.
+    if (searchParams.get("brighton") !== "all") {
+      notFound(); // We don't yet support more granular filtering.
+    }
+    // There is not yet a merged feed for Brighton.
+    envVar = "ICS_URL_BRIGHTON_MOVINGSTILLNESS";
+  } else if (searchParams.size === 1 && searchParams.has("bristol")) {
     // n.b. restofuk is not currently supported for Bristol.
     if (searchParams.get("bristol") !== "all") {
       notFound(); // We don't yet support more granular filtering.
     }
-    envVar = "ICS_URL_BRISTOL_MANUAL"; // There is no merged feed for Bristol.
+    // There is no merged feed for Bristol.
+    envVar = "ICS_URL_BRISTOL_MANUAL";
   } else {
     const allowedParams = new Set(["london", "restofuk"]);
     for (const key of searchParams.keys()) {
