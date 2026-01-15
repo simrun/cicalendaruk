@@ -27,6 +27,11 @@ export default function Page() {
           color: "orange",
         },
         {
+          url: "/feeds/london-movingstillness.ics",
+          format: "ics",
+          color: "teal",
+        },
+        {
           url: "/feeds/london-manual.ics",
           format: "ics",
           color: "green",
