@@ -8,13 +8,13 @@ const icsPathToEnvVar: Map<string, string> = new Map([
   // These feeds are inputs to the calendar that we are proxying:
   ["brighton-movingstillness.ics", "ICS_URL_BRIGHTON_MOVINGSTILLNESS"],
   ["bristol-manual.ics", "ICS_URL_BRISTOL_MANUAL"],
-  ["southwest-manual.ics", "ICS_URL_SOUTHWEST_MANUAL"],
   ["ricknodine.ics", "ICS_URL_RICKNODINE"],
   ["cigoldsmiths.ics", "ICS_URL_CIGOLDSMITHS"],
   ["mariechabert.ics", "ICS_URL_MARIECHABERT"],
   ["markrietema.ics", "ICS_URL_MARKRIETEMA"],
   ["london-movingstillness.ics", "ICS_URL_LONDON_MOVINGSTILLNESS"],
   ["london-manual.ics", "ICS_URL_LONDON_MANUAL"],
+  ["southwest-manual.ics", "ICS_URL_SOUTHWEST_MANUAL"],
   ["uk-manual.ics", "ICS_URL_UK_MANUAL"],
 ]);
 

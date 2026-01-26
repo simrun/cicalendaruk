@@ -21,9 +21,9 @@ export default function Page() {
           <li className="list-['🚇']">
             <Link href={"/london"}>London</Link>
           </li>
-          {/* <li>
+          <li className="list-['↙️']">
             <Link href={"/southwest"}>The South West</Link>
-          </li> */}
+          </li>
         </ul>
 
         <div className="mt-10 text-sm prose-p:m-1">

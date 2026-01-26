@@ -12,7 +12,7 @@ export default function Page() {
   // the major calendar apps. This was gathered from many sources, including:
   // https://stackoverflow.com/questions/75119105/how-to-create-a-subscribtion-link-to-ics-webcal-calendars
 
-  const calendarName = "The South West Contact Improvisation";
+  const calendarName = "South West Contact Improvisation";
   const icsHttpsUrl = "https://cicalendar.uk/subscribe.ics?southwest=all";
   const icsWebcalUrl = icsHttpsUrl.replace("https://", "webcal://");
   // Only seems to work (on desktop web) with webcal or http (not https) scheme :-|
@@ -37,7 +37,7 @@ export default function Page() {
         <div className="prose mt-1 prose-blockquote:font-normal">
           <p>
             You can subscribe to this calendar so the latest CI events in
-            The South West automatically appear in your calendar app.
+            the South West automatically appear in your calendar app.
           </p>
           <p>Select your calendar app to see instructions:</p>
           <Expandable>
