@@ -23,6 +23,13 @@ export async function GET(request: NextRequest): Promise<Response> {
     }
     // There is no merged feed for Bristol.
     envVar = "ICS_URL_BRISTOL_MANUAL";
+  } else if (searchParams.size === 1 && searchParams.has("southwest")) {
+    // n.b. restofuk is not currently supported for The South West.
+    if (searchParams.get("southwest") !== "all") {
+      notFound(); // We don't yet support more granular filtering.
+    }
+    // There is no merged feed for The South West.
+    envVar = "ICS_URL_SOUTHWEST_MANUAL";
   } else {
     const allowedParams = new Set(["london", "restofuk"]);
     for (const key of searchParams.keys()) {
