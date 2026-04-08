@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 
+import { fetchWithKVCache } from "@/lib/ics-cache";
+
 const icsPathToEnvVar: Map<string, string> = new Map([
   // These feeds are inputs to the calendar that we are proxying:
   ["brighton-movingstillness.ics", "ICS_URL_BRIGHTON_MOVINGSTILLNESS"],
@@ -33,29 +35,25 @@ export async function GET(
     });
   }
 
-  const res = await fetch(targetUrl, {
-    // For now, don't cache proxied ICS files server-side, so that editors see
-    // the results of their edits immediately. If we wanted to cache files for
-    // e.g. 60 seconds we could instead use `next: { revalidate: 60 },` but note
-    // that NextJS uses stale-while-revalidate semantics (see
-    // https://nextjs.org/docs/app/building-your-application/caching#time-based-revalidation)
-    // so the first request after it expires will see arbitrarily(?) stale data.
-    // (For debugging server-side caching, note that enabling "Disable cache" in
-    // Chrome DevTools bypasses this server-side cache, presumably because that
-    // causes Chrome to send `Cache-Control: no-cache` and `Pragma: no-cache`
-    // request headers.)
-    next: { revalidate: 0 }, // Using this instead of the more idiomatic `cache: "no-store",` due to https://github.com/cloudflare/workerd/issues/698
-  });
+  const result = await fetchWithKVCache(targetUrl);
 
-  return new NextResponse(res.body, {
+  if (result.kind === "error") {
+    return new NextResponse("Upstream feed unavailable", { status: 502 });
+  }
+
+  const cacheStatus =
+    result.kind === "cached"
+      ? `cached, age=${result.ageSec}s`
+      : result.kind === "stale-fallback"
+        ? `STALE-FALLBACK, age=${result.ageSec}s`
+        : "fetched";
+
+  return new NextResponse(result.body, {
     headers: {
-      // Don't let browsers cache these feeds either. (If we did increase
-      // max-age, you could bypass the client-side cache by enabling "Disable
-      // cache" in Chrome DevTools, or whilst Chrome DevTools is open
-      // right-click the Reload button & select "Empty cache and hard reload".)
       "Cache-Control": "max-age=0",
       "Content-Type": "text/calendar; charset=utf-8",
       "X-Content-Type-Options": "nosniff",
+      "X-ICS-Cache-Status": cacheStatus,
     },
   });
 }
