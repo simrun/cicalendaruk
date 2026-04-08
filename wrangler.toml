@@ -3,10 +3,6 @@ pages_build_output_dir = ".vercel/output/static"
 compatibility_flags = [ "nodejs_compat" ]
 compatibility_date = "2024-08-06"
 
-[[kv_namespaces]]
-binding = "ICS_CACHE"
-id = "e6223c2dceb5487fadc160ccd457c339"
-
 [env.production.vars]
 # only log google analytics in production, not preview or dev
 GA_MEASUREMENT_ID = "G-G4H7QHT4TP"

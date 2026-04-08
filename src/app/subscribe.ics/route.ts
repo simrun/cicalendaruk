@@ -4,8 +4,6 @@ import { notFound } from "next/navigation";
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 
-import { fetchWithKVCache } from "@/lib/ics-cache";
-
 // DO NOT DROP SUPPORT FOR PREVIOUS URLS as users subscribe to these URLs.
 export async function GET(request: NextRequest): Promise<Response> {
   const searchParams = request.nextUrl.searchParams;
@@ -57,20 +55,15 @@ export async function GET(request: NextRequest): Promise<Response> {
     });
   }
 
-  const result = await fetchWithKVCache(targetUrl);
+  const res = await fetch(targetUrl, {
+    // For now, don't cache proxied ICS files server-side, though if we could
+    // stop NextJS from using stale-while-revalidate semantics (see
+    // https://nextjs.org/docs/app/building-your-application/caching#time-based-revalidation)
+    // it would be nice to do so.
+    next: { revalidate: 0 }, // Using this instead of the more idiomatic `cache: "no-store",` due to https://github.com/cloudflare/workerd/issues/698
+  });
 
-  if (result.kind === "error") {
-    return new NextResponse("Upstream feed unavailable", { status: 502 });
-  }
-
-  const cacheStatus =
-    result.kind === "cached"
-      ? `cached, age=${result.ageSec}s`
-      : result.kind === "stale-fallback"
-        ? `STALE-FALLBACK, age=${result.ageSec}s`
-        : "fetched";
-
-  return new NextResponse(result.body, {
+  return new NextResponse(res.body, {
     headers: {
       // Match other ICS providers in disallowing caching. Calendars still seem
       // to choose their own update intervals despite that.
@@ -79,7 +72,6 @@ export async function GET(request: NextRequest): Promise<Response> {
       "Cache-Control": "max-age=0, private, must-revalidate",
       "Content-Type": "text/calendar; charset=utf-8",
       "X-Content-Type-Options": "nosniff",
-      "X-ICS-Cache-Status": cacheStatus,
     },
   });
 }
